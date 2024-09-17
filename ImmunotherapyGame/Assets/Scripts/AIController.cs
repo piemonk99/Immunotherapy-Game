@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
-    public GameObject cellPrefab;           // Assign your Cell prefab in the inspector
-    public int numberOfCells = 10;          // Number of cells to instantiate
+    [SerializeField] private GameObject cellPrefab;
+    [SerializeField] private int numberOfCells;
     private List<GameObject> cells = new List<GameObject>();
 
     [SerializeField] private List<AnimationClip> allCellAnimations;
     private List<AnimationClip> usedAnimations;
+
+    [SerializeField] private GameObject[] shapeSpritePrefabs;
+
+    private CellFactory cellFactory;
 
     void Start()
     {
@@ -21,59 +25,25 @@ public class AIController : MonoBehaviour
             allCellAnimations.RemoveAt(rand);
         }
 
+        cellFactory = new CellFactory(cellPrefab, shapeSpritePrefabs);
+
         // Instantiate the cells
         for (int i = 0; i < numberOfCells; i++)
         {
-            GameObject newCell = Instantiate(cellPrefab, GetRandomPosition(), Quaternion.identity);
+            Vector3 randomPosition = cellFactory.GetRandomPosition();
+            GameObject newCell = cellFactory.CreateCell(randomPosition, usedAnimations);
             cells.Add(newCell);
-            RandomizeCell(newCell);
-            newCell.GetComponent<CellAI>().SetCellAnimations(usedAnimations.ToArray());
             StartCellAI(newCell);
         }
     }
 
-    // Assign random colors and uniqueness to each cell
-    private void RandomizeCell(GameObject cell)
+    public void ReplicateCell(GameObject parentCell)
     {
-        // Get references to the Border and Center
-        Transform border = cell.transform.Find("Border");
-        Transform center = cell.transform.Find("Center");
-        Transform square = center.Find("Square");
-        Transform diamond = center.Find("Diamond");
-        Transform hexagon = center.Find("Hexagon");
-
-        // Generate a moderately dark random color for the border
-        Color randomBorderColor = new Color(Random.value * 0.5f, Random.value * 0.5f, Random.value * 0.5f);
-
-        // Create a lighter version of the border color for the center
-        Color randomCenterColor = Color.Lerp(randomBorderColor, Color.white, 0.8f);
-
-        // Assign colors to the Border and Center
-        border.GetComponent<SpriteRenderer>().color = randomBorderColor;
-        center.GetComponent<SpriteRenderer>().color = randomCenterColor;
-
-        // Random colors for each of the shapes in the center
-        square.GetComponent<SpriteRenderer>().color = GetRandomColor();
-        diamond.GetComponent<SpriteRenderer>().color = GetRandomColor();
-        hexagon.GetComponent<SpriteRenderer>().color = GetRandomColor();
-
-        // You can also assign a unique ID to each cell for identification if needed
-        cell.name = "Cell_" + Random.Range(1000, 9999); // Assign a unique name
+        GameObject newCell = cellFactory.ReplicateCell(parentCell, usedAnimations);
+        cells.Add(newCell);
+        StartCellAI(newCell);
     }
 
-    // Generates a random color
-    private Color GetRandomColor()
-    {
-        return new Color(Random.value, Random.value, Random.value);
-    }
-
-    // Set a random position for each cell (you can customize the range)
-    private Vector3 GetRandomPosition()
-    {
-        return new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0f);
-    }
-
-    // Start the CellAI and call DecideActivity every 3-8 seconds
     private void StartCellAI(GameObject cell)
     {
         CellAI cellAI = cell.GetComponent<CellAI>();
@@ -83,12 +53,11 @@ public class AIController : MonoBehaviour
         }
     }
 
-    // Coroutine to call DecideActivity every 3-8 seconds
     private IEnumerator DecideActivityRoutine(CellAI cellAI)
     {
         while (true)
         {
-            float delay = Random.Range(3f, 8f); // Random delay between 3-8 seconds
+            float delay = Random.Range(3f, 8f);
             yield return new WaitForSeconds(delay);
             cellAI.DecideActivity();
         }

@@ -9,10 +9,12 @@ public class CellAI : MonoBehaviour
 
     private AnimationClip[] cellAnimations;
 
+    private CellSpecifications cellSpecifications;
+
     [SerializeField] private float speed = 1;
-    [SerializeField] private float maxSpeed = 1.2f;        // The speed threshold beyond which drag will increase
-    [SerializeField] private float increasedDrag = .8f;   // The drag value to apply when the speed is too high
-    [SerializeField] private float normalDrag = .1f;      // The normal drag value when under the speed threshold
+    [SerializeField] private float maxSpeed = 1.2f;        //The speed threshold beyond which drag will increase
+    [SerializeField] private float increasedDrag = .8f;   //The drag value to apply when the speed is too high
+    [SerializeField] private float normalDrag = .1f;      //The normal drag value when under the speed threshold
 
     private bool goingToDoActivity;
 
@@ -34,6 +36,11 @@ public class CellAI : MonoBehaviour
         double rand = Random.value;
         if (rand > .66) goingToDoActivity = true;
         else goingToDoActivity = false;
+
+        if (Random.value > 0.9f) // 10% chance to replicate
+        {
+            FindObjectOfType<AIController>().ReplicateCell(gameObject);
+        }
     }
 
     private void DoActivity()
@@ -60,17 +67,17 @@ public class CellAI : MonoBehaviour
         AdjustDragBasedOnSpeed();
     }
 
-    // This function increases the drag when velocity exceeds maxSpeed
+    //This function increases the drag when velocity exceeds maxSpeed
     private void AdjustDragBasedOnSpeed()
     {
-        // Check if the velocity exceeds the specified threshold
+        //Check if the velocity exceeds maxSpeed
         if (rb.velocity.magnitude > maxSpeed)
         {
-            rb.drag = increasedDrag;  // Apply increased drag to slow down the object
+            rb.drag = increasedDrag;  //Apply increased drag to slow down the object
         }
         else
         {
-            rb.drag = normalDrag;     // Reset to normal drag
+            rb.drag = normalDrag;     //Reset to normal drag
         }
     }
 
@@ -79,4 +86,50 @@ public class CellAI : MonoBehaviour
     {
         cellAnimations = animations;
     }
+
+    public void SetRandomizedCellParameters(Color borderColor, Color centerColor, GameObject[] randomShapes, Color[] randomShapeColors)
+    {
+        cellSpecifications = new CellSpecifications(borderColor, centerColor, randomShapes, randomShapeColors);
+
+        Transform border = transform.Find("Border");
+        Transform center = transform.Find("Center");
+        
+        //Sets border and center colors
+        border.GetComponent<SpriteRenderer>().color = borderColor;
+        center.GetComponent<SpriteRenderer>().color = centerColor;
+
+        //Instantiates all random shapes in the cell and sets their colors
+        for (int i = 0; i < randomShapes.Length; i++)
+        {
+            GameObject shape = Instantiate(randomShapes[i], center.Find($"Shape{i+1}"));
+            SpriteRenderer[] shapeSpriteRenderers = shape.GetComponentsInChildren<SpriteRenderer>();
+
+            foreach (SpriteRenderer renderer in shapeSpriteRenderers)
+            {
+                renderer.color = randomShapeColors[i];
+            }
+        }
+    }
+
+    public CellSpecifications GetSpecifications()
+    {
+        return cellSpecifications;
+    }
 }
+
+public class CellSpecifications
+{
+    public Color borderColor;
+    public Color centerColor;
+    public GameObject[] randomShapes;
+    public Color[] randomShapeColors;
+
+    public CellSpecifications(Color borderColor, Color centerColor, GameObject[] randomShapes, Color[] randomShapeColors)
+    {
+        this.borderColor = borderColor;
+        this.centerColor = centerColor;
+        this.randomShapes = randomShapes;
+        this.randomShapeColors = randomShapeColors;
+    }
+}
+

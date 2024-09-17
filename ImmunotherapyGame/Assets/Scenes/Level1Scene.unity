@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 88003739}
   - component: {fileID: 88003740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 110143894}
   - component: {fileID: 110143895}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 140519522}
   - component: {fileID: 140519523}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,6 +439,11 @@ MonoBehaviour:
   allCellAnimations:
   - {fileID: 7400000, guid: dd4c115dafe88814fb184b06473cbf63, type: 2}
   - {fileID: 7400000, guid: f6b8cf7e15c2e584c8fdd5ea3fc1c993, type: 2}
+  shapeSpritePrefabs:
+  - {fileID: 8179944854343697984, guid: 5a81d1b06af46d845ad6b3668f3ca8ac, type: 3}
+  - {fileID: 4537274165129098650, guid: a836f9ed82c7c964ea3458c1412bbc4a, type: 3}
+  - {fileID: 3193380970929199708, guid: d39cd81ad0e999245957c0620e1a9805, type: 3}
+  - {fileID: 8930270283067588418, guid: 6efcb771d84b993438c6b2b06f4d06e3, type: 3}
 --- !u!4 &356286322
 Transform:
   m_ObjectHideFlags: 0
@@ -593,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 542719861}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,9 +896,9 @@ GameObject:
   - component: {fileID: 1552096720}
   - component: {fileID: 1552096719}
   - component: {fileID: 1552096721}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -23,16 +23,16 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer(float moveHorizontal, float moveVertical)
     {
-        // Get input as a normalized vector
+        //Get input as a normalized vector
         movementInput = new Vector2(moveHorizontal, moveVertical).normalized;
 
-        // Apply force to the player, scaled by acceleration
+        //Apply force to the player, scaled by acceleration
         rb.AddForce(movementInput * acceleration);
 
-        // Clamp the player's velocity to the max move speed
+        //Clamp the player's velocity to the max move speed
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, moveSpeed);
 
-        // Rotate the player to face movement direction if moving
+        //Rotate the player to face movement direction if moving
         if (rb.velocity.magnitude > 0.1f)
         {
             RotateTowardsMovement(rb.velocity);
