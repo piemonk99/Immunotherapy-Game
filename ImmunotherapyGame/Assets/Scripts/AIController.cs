@@ -8,14 +8,26 @@ public class AIController : MonoBehaviour
     public int numberOfCells = 10;          // Number of cells to instantiate
     private List<GameObject> cells = new List<GameObject>();
 
+    [SerializeField] private List<AnimationClip> allCellAnimations;
+    private List<AnimationClip> usedAnimations;
+
     void Start()
     {
+        usedAnimations = new List<AnimationClip>();
+        for (int i = Mathf.Min(5, allCellAnimations.Count); i > 0; i--)
+        {
+            int rand = Random.Range(0, allCellAnimations.Count);
+            usedAnimations.Add(allCellAnimations[rand]);
+            allCellAnimations.RemoveAt(rand);
+        }
+
         // Instantiate the cells
         for (int i = 0; i < numberOfCells; i++)
         {
             GameObject newCell = Instantiate(cellPrefab, GetRandomPosition(), Quaternion.identity);
             cells.Add(newCell);
             RandomizeCell(newCell);
+            newCell.GetComponent<CellAI>().SetCellAnimations(usedAnimations.ToArray());
             StartCellAI(newCell);
         }
     }
