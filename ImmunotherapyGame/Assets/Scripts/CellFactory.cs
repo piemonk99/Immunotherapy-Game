@@ -14,11 +14,11 @@ public class CellFactory
         shapeSpritePrefabs = shapes;
     }
 
-    public GameObject CreateCell(Vector3 position, List<AnimationClip> usedAnimations)
+    public GameObject CreateCell(Vector3 position, List<AnimationClip> usedAnimations, bool isCancer)
     {
         GameObject newCell = GameObject.Instantiate(cellPrefab, position, Quaternion.identity);
         RandomizeCell(newCell);
-        newCell.GetComponent<CellAI>().SetCellAnimations(usedAnimations.ToArray());
+        newCell.GetComponent<CellAI>().SetCellBehavior(isCancer, usedAnimations.ToArray());
         return newCell;
     }
 
@@ -59,7 +59,7 @@ public class CellFactory
             childSpecifications.randomShapes,
             childSpecifications.randomShapeColors
         );
-        childCell.GetComponent<CellAI>().SetCellAnimations(usedAnimations.ToArray());
+        childCell.GetComponent<CellAI>().SetCellBehavior(parentCellAI.GetIsCancer(), usedAnimations.ToArray());
 
         childCell.name = "Cell_" + Random.Range(1000, 9999);
 

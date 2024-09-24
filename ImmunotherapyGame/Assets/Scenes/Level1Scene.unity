@@ -439,6 +439,7 @@ MonoBehaviour:
   allCellAnimations:
   - {fileID: 7400000, guid: dd4c115dafe88814fb184b06473cbf63, type: 2}
   - {fileID: 7400000, guid: f6b8cf7e15c2e584c8fdd5ea3fc1c993, type: 2}
+  - {fileID: 7400000, guid: 0afaa62cfda9d8b49ab3a1e46a8a1c8e, type: 2}
   shapeSpritePrefabs:
   - {fileID: 8179944854343697984, guid: 5a81d1b06af46d845ad6b3668f3ca8ac, type: 3}
   - {fileID: 4537274165129098650, guid: a836f9ed82c7c964ea3458c1412bbc4a, type: 3}

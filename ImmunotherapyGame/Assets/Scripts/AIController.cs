@@ -27,11 +27,16 @@ public class AIController : MonoBehaviour
 
         cellFactory = new CellFactory(cellPrefab, shapeSpritePrefabs);
 
-        // Instantiate the cells
+        //Instantiate the cells
         for (int i = 0; i < numberOfCells; i++)
         {
             Vector3 randomPosition = cellFactory.GetRandomPosition();
-            GameObject newCell = cellFactory.CreateCell(randomPosition, usedAnimations);
+
+            //Makes a few of the cells generated cancer cells
+            bool isCancer = false;
+            if (i < numberOfCells / 5) isCancer = true;
+            
+            GameObject newCell = cellFactory.CreateCell(randomPosition, usedAnimations, isCancer);
             cells.Add(newCell);
             StartCellAI(newCell);
         }
