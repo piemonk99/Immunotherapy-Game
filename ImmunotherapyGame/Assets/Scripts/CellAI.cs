@@ -16,6 +16,9 @@ public class CellAI : MonoBehaviour
     [SerializeField] private float increasedDrag = .8f;   //The drag value to apply when the speed is too high
     [SerializeField] private float normalDrag = .1f;      //The normal drag value when under the speed threshold
 
+    [HideInInspector] public float timeAlive = 0f;
+    [HideInInspector] public float timeSinceReproducing;
+
     private bool isCancer { get; set; }
     private float replicationTime; //Time in seconds before the cell replicates
     private float replicationTimer; //Countdown timer for replication
@@ -42,6 +45,9 @@ public class CellAI : MonoBehaviour
     private void Update()
     {
         HandleReplicationTimer();
+
+        timeAlive += Time.deltaTime;
+        timeSinceReproducing += Time.deltaTime;
     }
 
     //Method to handle the replication countdown
@@ -51,6 +57,7 @@ public class CellAI : MonoBehaviour
 
         if (replicationTimer <= 0)
         {
+            timeSinceReproducing = 0;
             //Trigger replication when the timer reaches zero
             Replicate();
             float randomTimeCoefficient = (Random.value * .4f) + .8f;

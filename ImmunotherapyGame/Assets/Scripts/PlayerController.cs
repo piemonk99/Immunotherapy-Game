@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private GameObject infoPanel;
 
     private Rigidbody2D rb;
     private Vector2 movementInput;
@@ -19,6 +20,23 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         mainCamera.transform.position = transform.position + new Vector3(0, 0, -10);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+            if (hit.collider != null)
+            {
+                CellAI cellAI = hit.transform.GetComponent<CellAI>();
+                if (cellAI != null)
+                {
+                    infoPanel.SetActive(true);
+                    infoPanel.GetComponent<InfoPanel>().UpdateInfo(cellAI);
+                }
+            }
+        }
+
     }
 
     public void MovePlayer(float moveHorizontal, float moveVertical)

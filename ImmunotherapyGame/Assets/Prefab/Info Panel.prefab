@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 699263931486439553}
   - component: {fileID: 401883515544174686}
   - component: {fileID: 3621335393310059923}
+  - component: {fileID: 1676720572383756986}
   m_Layer: 5
   m_Name: Info Panel
   m_TagString: Untagged
@@ -285,6 +286,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1676720572383756986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2385929846281322944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220a77aa94813cc459ae0f3a0007451a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3344515542424930781
 GameObject:
   m_ObjectHideFlags: 0
