@@ -25,6 +25,13 @@ public class CellAI : MonoBehaviour
 
     private bool goingToDoActivity;
 
+    private bool marked;
+    private bool dead;
+
+    private float activityWaitDelay;
+
+    private GameObject currencyPrefab;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,8 +51,18 @@ public class CellAI : MonoBehaviour
 
     private void Update()
     {
-        HandleReplicationTimer();
+        // Marked cells do not replicate to avoid the case where all of the cancer cells have been marked but they replicate too quickly for the immune cells to kill them all.
+        if (!IsMarked())
+            HandleReplicationTimer();
 
+        activityWaitDelay -= Time.deltaTime;
+
+        if (activityWaitDelay <= 0)
+        {
+            DecideActivity();
+            activityWaitDelay += Random.Range(3f, 8f);
+        }
+        
         timeAlive += Time.deltaTime;
         timeSinceReproducing += Time.deltaTime;
     }
@@ -89,13 +106,15 @@ public class CellAI : MonoBehaviour
 
     private void MoveCell()
     {
-        float xVelocity = Random.Range(-1f, 1f);
-        float yVelocity = Random.Range(-1f, 1f);
+        // FIXME this method of generating a random velocity is likely biased. Could instead rotate the vector (1, 0) around the Z axis by a random amount (within 0-360 degrees).
+        // float xVelocity = Random.Range(-1f, 1f);
+        // float yVelocity = Random.Range(-1f, 1f);
+        Vector2 velocity = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.forward) * Vector2.right;
 
         // Normalize velocity to match the set speed
-        float normalizationFactor = speed / (Mathf.Abs(xVelocity) + Mathf.Abs(yVelocity));
+        float normalizationFactor = speed / (Mathf.Abs(velocity.x) + Mathf.Abs(velocity.y));
 
-        rb.AddForce(new Vector2(xVelocity * normalizationFactor, yVelocity * normalizationFactor) * 400f);
+        rb.AddForce(new Vector2(velocity.x * normalizationFactor, velocity.y * normalizationFactor) * 400f * Time.deltaTime * 60);
     }
 
     void FixedUpdate()
@@ -148,12 +167,12 @@ public class CellAI : MonoBehaviour
         if (isCancer)
         {
             cellAnimations = animations; //Cancer cells get all 5 used animations 
-            replicationTime = 10; //Cancer cells replicate time
+            replicationTime = 40; //Cancer cells replication time
         }
         else
         {
             cellAnimations = animations.Take(animations.Length - 1).ToArray(); //Regular cells get all but the last animation
-            replicationTime = 40; //Regular cell replication time
+            replicationTime = 160; //Regular cell replication time
         }
     }
 
@@ -166,8 +185,41 @@ public class CellAI : MonoBehaviour
     {
         return cellSpecifications;
     }
-}
 
+    public void Mark()
+    {
+        marked = true;
+        transform.Find("Border").GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f);
+    }
+
+    public bool IsMarked()
+    {
+        return marked;
+    }
+
+    public void Die()
+    {
+        // Avoid dropping currency more than once
+        if (dead)
+            return;
+
+        if (isCancer)
+        {
+            int currencyAmount = Random.Range(3, 5);
+
+            for (var i = 0; i < currencyAmount; ++i)
+                Instantiate(currencyPrefab, transform.position + Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.forward) * Vector2.right * Random.Range(0f, 0.5f), Quaternion.identity);
+        }
+
+        dead = true;
+        Destroy(gameObject);
+    }
+
+    public void SetCurrencyPrefab(GameObject currency)
+    {
+        currencyPrefab = currency;
+    }
+}
 
 public class CellSpecifications
 {

@@ -5,8 +5,10 @@ using UnityEngine;
 public class AIController : MonoBehaviour
 {
     [SerializeField] private GameObject cellPrefab;
+    [SerializeField] private GameObject tCellPrefab;
+    [SerializeField] private GameObject currencyPrefab;
     [SerializeField] private int numberOfCells;
-    private List<GameObject> cells = new List<GameObject>();
+    [SerializeField] private int numberOfTCells;
 
     [SerializeField] private List<AnimationClip> allCellAnimations;
     private List<AnimationClip> usedAnimations;
@@ -25,46 +27,48 @@ public class AIController : MonoBehaviour
             allCellAnimations.RemoveAt(rand);
         }
 
-        cellFactory = new CellFactory(cellPrefab, shapeSpritePrefabs);
+        cellFactory = new CellFactory(cellPrefab, tCellPrefab, currencyPrefab, shapeSpritePrefabs);
 
-        //Instantiate the cells
+        // Instantiate the cells
         for (int i = 0; i < numberOfCells; i++)
         {
             Vector3 randomPosition = cellFactory.GetRandomPosition();
 
             //Makes a few of the cells generated cancer cells
             bool isCancer = false;
-            if (i < numberOfCells / 5) isCancer = true;
+            if (i < numberOfCells / 10) isCancer = true;
             
             GameObject newCell = cellFactory.CreateCell(randomPosition, usedAnimations, isCancer);
-            cells.Add(newCell);
-            StartCellAI(newCell);
         }
+
+        // Instantiate the T-cells
+        for (int i = 0; i < numberOfTCells; i++)
+        {
+            Vector3 randomPosition = cellFactory.GetRandomPosition();
+            cellFactory.CreateTCell(randomPosition);
+        }
+    }
+
+    void Update()
+    {
+        // FIXME would be more efficient to only check when a cell dies or replicates
+        int cancerCells = 0;
+
+        foreach (CellAI cell in cellFactory.GetCells())
+            if (cell.GetIsCancer())
+                ++cancerCells;
+
+        if (cancerCells == 0)
+        { } // Win
+
+        float percentageCancer = (float)cancerCells / cellFactory.GetCells().Count;
+
+        if (percentageCancer >= 0.2f)
+        { } // Lose
     }
 
     public void ReplicateCell(GameObject parentCell)
     {
         GameObject newCell = cellFactory.ReplicateCell(parentCell, usedAnimations);
-        cells.Add(newCell);
-        StartCellAI(newCell);
-    }
-
-    private void StartCellAI(GameObject cell)
-    {
-        CellAI cellAI = cell.GetComponent<CellAI>();
-        if (cellAI != null)
-        {
-            StartCoroutine(DecideActivityRoutine(cellAI));
-        }
-    }
-
-    private IEnumerator DecideActivityRoutine(CellAI cellAI)
-    {
-        while (true)
-        {
-            float delay = Random.Range(3f, 8f);
-            yield return new WaitForSeconds(delay);
-            cellAI.DecideActivity();
-        }
     }
 }

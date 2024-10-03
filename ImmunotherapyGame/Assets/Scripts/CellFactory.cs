@@ -6,11 +6,17 @@ using UnityEngine;
 public class CellFactory
 {
     private GameObject cellPrefab;
+    private GameObject tCellPrefab;
+    private GameObject currencyPrefab;
     private GameObject[] shapeSpritePrefabs;
 
-    public CellFactory(GameObject prefab, GameObject[] shapes)
+    private List<CellAI> cells = new List<CellAI>();
+
+    public CellFactory(GameObject cell, GameObject tCell, GameObject currency, GameObject[] shapes)
     {
-        cellPrefab = prefab;
+        cellPrefab = cell;
+        tCellPrefab = tCell;
+        currencyPrefab = currency;
         shapeSpritePrefabs = shapes;
     }
 
@@ -19,12 +25,21 @@ public class CellFactory
         GameObject newCell = GameObject.Instantiate(cellPrefab, position, Quaternion.identity);
         RandomizeCell(newCell);
         newCell.GetComponent<CellAI>().SetCellBehavior(isCancer, usedAnimations.ToArray());
+        newCell.GetComponent<CellAI>().SetCurrencyPrefab(currencyPrefab);
+        cells.Add(newCell.GetComponent<CellAI>());
         return newCell;
+    }
+
+    public GameObject CreateTCell(Vector3 position)
+    {
+        GameObject newTCell = GameObject.Instantiate(tCellPrefab, position, Quaternion.identity);
+        newTCell.GetComponent<TCellAI>().SetCellManager(this);
+        return newTCell;
     }
 
     public void RandomizeCell(GameObject cell)
     {
-        cell.name = "Cell_" + Random.Range(1000, 9999);
+        cell.name = "Cell_" + Random.Range(1000, 9999); // Needs to be practically guaranteed to be unique (UUID) or just unique (avoid picking number already used by another cell)
 
         Color randomBorderColor = new Color(Random.value * 0.5f, Random.value * 0.5f, Random.value * 0.5f);
         Color randomCenterColor = Color.Lerp(randomBorderColor, Color.white, 0.8f);
@@ -60,8 +75,11 @@ public class CellFactory
             childSpecifications.randomShapeColors
         );
         childCell.GetComponent<CellAI>().SetCellBehavior(parentCellAI.GetIsCancer(), usedAnimations.ToArray());
+        childCell.GetComponent<CellAI>().SetCurrencyPrefab(currencyPrefab);
 
         childCell.name = "Cell_" + Random.Range(1000, 9999);
+
+        cells.Add(childCell.GetComponent<CellAI>());
 
         return childCell;
     }
@@ -140,5 +158,10 @@ public class CellFactory
     public Vector3 GetRandomPosition()
     {
         return new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0f);
+    }
+
+    public List<CellAI> GetCells()
+    {
+        return cells;
     }
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float acceleration = 10f;
     [SerializeField] private float rotationLerpSpeed = 10f;
+
+    private bool bindingMode;
+    private int currency;
+
+    [SerializeField] private TextMeshProUGUI bindingModeText;
+    [SerializeField] private TextMeshProUGUI currencyAmountText;
 
     private void Start()
     {
@@ -67,5 +74,32 @@ public class PlayerController : MonoBehaviour
 
         //Apply the smoothed rotation to the player
         transform.rotation = Quaternion.Euler(0f, 0f, smoothedAngle);
+    }
+
+    public void ToggleBindingMode()
+    {
+        bindingMode = !bindingMode;
+        bindingModeText.text = bindingMode ? "Binding Mode Enabled" : "";
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!bindingMode)
+            return;
+
+        CellAI cell = collision.gameObject.GetComponent<CellAI>();
+
+        if (cell != null && !cell.IsMarked())
+            cell.Mark();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Currency"))
+        {
+            ++currency;
+            currencyAmountText.text = $"{currency}";
+            Destroy(other.gameObject);
+        }
     }
 }
