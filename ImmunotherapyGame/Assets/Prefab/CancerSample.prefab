@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 9149290151616503851}
   - component: {fileID: 1571221263697485035}
   - component: {fileID: 2165538010161297162}
-  - component: {fileID: 7737915848757096807}
+  - component: {fileID: 4031433064262563333}
   m_Layer: 0
   m_Name: CancerSample
-  m_TagString: Untagged
+  m_TagString: Currency
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,8 +107,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &7737915848757096807
-PolygonCollider2D:
+--- !u!61 &4031433064262563333
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -149,10 +149,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.13103624, y: 0.12777856}
-      - {x: -0.13179386, y: -0.22036915}
-      - {x: 0.13416433, y: -0.22510995}
-      - {x: 0.13297924, y: 0.1282381}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.5}
+  m_EdgeRadius: 0

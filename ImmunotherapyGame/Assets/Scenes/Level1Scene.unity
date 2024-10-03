@@ -447,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 5677818818599276213, guid: c06b10a03610d674d95ae85edda458eb, type: 3}
   tCellPrefab: {fileID: 5677818818599276213, guid: 4aa43d5139d8849afb086c460e8d8b60, type: 3}
-  currencyPrefab: {fileID: 8599222005331672402, guid: 376f7bc5fdba5f85aa3d13a638f0c914, type: 3}
+  currencyPrefab: {fileID: 1238440766183870696, guid: 2c174a590c766614e86c675183aa0592, type: 3}
   numberOfCells: 20
   numberOfTCells: 2
   allCellAnimations:
