@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0792206695b00eb4193d2b4c9dd2f7b7
+guid: 67f6310ba1eda2047b3319f7a0421968
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UIButton_Animations_0
+      name: Nuclei_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9192a34db609fb9459928ec8867c6150
-      internalID: 903004047
+      spriteID: 1dcbe38ba1d0ac147becab925215a627
+      internalID: -671448743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_1
+      name: Nuclei_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51456c3ee33ea541adf83335af684ac
+      internalID: 1855411098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +153,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c9b3603ac56d10429c28d4a787cb3c9
-      internalID: 1057510974
+      spriteID: ac60bce553e860749921d9ef8d251e95
+      internalID: -1701503950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_2
+      name: Nuclei_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bc61d07b22de2845bfe35b48bd5c6dd
+      internalID: 2043604951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_4
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +195,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b84b22061a6c1394fb944a55c7a66b14
-      internalID: 317658153
+      spriteID: 1a33b3c6cffbe5941bbcf13c61eb228f
+      internalID: -1254404822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_3
+      name: Nuclei_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98849fbcb669a3e41a7c6170249a20b9
+      internalID: -1085862343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_6
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +237,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d78e25487e8796946a82e8db7dbec0f7
-      internalID: -1428349865
+      spriteID: b3e0e71d5e7674047bb3211c1f50024f
+      internalID: -1509817776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_4
+      name: Nuclei_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d6c80bedee93a84c9f6b1e7d537081a
+      internalID: 785778344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_8
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +279,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e66bf3a0bf59e44bb03c83091ccdb90
-      internalID: 1219766915
+      spriteID: 27588aa4e1551d44ba0c2e104a8e4fad
+      internalID: 1863561351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_5
+      name: Nuclei_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b671e9eeab9d44dbd264d7a0059bb5
+      internalID: 1294558605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_10
       rect:
         serializedVersion: 2
         x: 160
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +321,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8a42528be0ee5d4687728f0d5c58652
-      internalID: 1667985719
+      spriteID: 8ebe489729d374e4f98f8f62a0e93ba8
+      internalID: -1756450781
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_6
+      name: Nuclei_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75dea6762b867c641b1c196825514e75
+      internalID: 973725302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_12
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +363,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4f3e062237297b4dbf34538b37a56ea
-      internalID: -1198506220
+      spriteID: bc6e99219425cdd42a8b9c87bdf9b28d
+      internalID: 306926503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_7
+      name: Nuclei_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef42cc537dcfa3d4c9a070b5bf488ab8
+      internalID: 1983800470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_14
       rect:
         serializedVersion: 2
         x: 224
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +405,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a57cd56528008d4db1a558d458dc745
-      internalID: -1163267651
+      spriteID: e8fdfc92b5aadfc4289cf93ef123364b
+      internalID: -190075760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_8
+      name: Nuclei_15
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d66520bf40bcbc43a600a74da53bc7b
+      internalID: 51442973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_16
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +447,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 066d22bfd623b8e4389d97b175e13884
-      internalID: -896420235
+      spriteID: 33714579a99a0be4180f4e1dc1bfb793
+      internalID: 1954893844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_9
+      name: Nuclei_17
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59693d494e072048ac5acedc67eb913
+      internalID: 1023140574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_18
       rect:
         serializedVersion: 2
         x: 288
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,20 +489,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bef7a0e91b60a74f802b0b163933fbd
-      internalID: -361058985
+      spriteID: b2469e49ffd2d5745bc9e7357701d8e1
+      internalID: -1702040938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_10
+      name: Nuclei_19
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d90e38a5ef1e5e46aa6354364500ffa
+      internalID: -512608311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_20
       rect:
         serializedVersion: 2
         x: 320
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +531,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2460e557d6b430642981985615414d10
-      internalID: 1846408404
+      spriteID: 3177abef1d3b75942bd65b014907cbae
+      internalID: 1235586744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_11
+      name: Nuclei_21
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0212b3ae19127584d86e091f04c8233f
+      internalID: -360764944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_22
       rect:
         serializedVersion: 2
         x: 352
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,20 +573,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 165d169a938b6f44782de06eace13f7d
-      internalID: -1370417235
+      spriteID: d5d68c9fb066d5742aeaa84b3c8fc27e
+      internalID: 2002726091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIButton_Animations_12
+      name: Nuclei_23
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f57c6a4e624504c9f8d04a0a95760c
+      internalID: 1168458530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nuclei_24
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,470 +615,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5107bae07f0434740ac9785e83860207
-      internalID: -1367159282
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_13
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eef959c5a09e09b4798306c780ac0946
-      internalID: 101608247
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_14
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7b37dfd07745374596288e0cfc6e8d0
-      internalID: 2132003001
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_15
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af7957abea520ff4f81e0ac8a7f6d634
-      internalID: 1388843133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_16
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 349ec9bb73752ea4d8d5e91f3a5ae65c
-      internalID: 1941081434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_17
-      rect:
-        serializedVersion: 2
-        x: 544
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 184c482afb7715c45905c1ef67d80cb8
-      internalID: -1736048411
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_18
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f91536d589a63e4cb96ed5eaf7089bc
-      internalID: 522364627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_19
-      rect:
-        serializedVersion: 2
-        x: 608
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c5bd9c37d8b346541b395772dc56d96b
-      internalID: -43078111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_20
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53aa1d54aa8d0cf47a246c01328ef941
-      internalID: -1440678213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_21
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 335ffdd928171d548ade79f66ad6c2bd
-      internalID: -1849917885
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_22
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 743ae779f98699645bcd22800b82a56c
-      internalID: -1293439427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_23
-      rect:
-        serializedVersion: 2
-        x: 736
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e54c2aa1eb346b44d9f4d2ea65c09e71
-      internalID: -1200282345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_24
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8024c03773ebc6b478d68b85b4fe1ef0
-      internalID: 511646095
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_25
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ebdfb6fc7a1b94348ba640102d431c98
-      internalID: -1748729885
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_26
-      rect:
-        serializedVersion: 2
-        x: 832
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 850c8076a9d059d4e992a794e57e9761
-      internalID: 908638410
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_27
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4687207e9bb388c47b99c15f2218502b
-      internalID: -466349116
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_28
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 051224e5b2fd6d241ad4dbaf7a6be708
-      internalID: -1418597663
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_29
-      rect:
-        serializedVersion: 2
-        x: 928
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ada6efd34a10254a9e95540452f64fc
-      internalID: 611362306
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_30
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6e01349b96b9f64b8829abd1bf64466
-      internalID: -1924963701
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_31
-      rect:
-        serializedVersion: 2
-        x: 992
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa8c5788c4f36264a87fa00cffc01cad
-      internalID: -1361596118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_32
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5260583e263648347a651b7d96ab26b6
-      internalID: -15741847
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_33
-      rect:
-        serializedVersion: 2
-        x: 1056
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e4590093cd1e31479c876e78170372c
-      internalID: -1519823123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIButton_Animations_34
-      rect:
-        serializedVersion: 2
-        x: 1088
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 74dc5aa9d2d7ff645a0051f368acb41f
-      internalID: 1066553433
+      spriteID: dfdb8ef773afa3648a148560ead3a43e
+      internalID: 1635939720
       vertices: []
       indices: 
       edges: []
@@ -842,41 +632,31 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UIButton_Animations_0: 903004047
-      UIButton_Animations_1: 1057510974
-      UIButton_Animations_10: 1846408404
-      UIButton_Animations_11: -1370417235
-      UIButton_Animations_12: -1367159282
-      UIButton_Animations_13: 101608247
-      UIButton_Animations_14: 2132003001
-      UIButton_Animations_15: 1388843133
-      UIButton_Animations_16: 1941081434
-      UIButton_Animations_17: -1736048411
-      UIButton_Animations_18: 522364627
-      UIButton_Animations_19: -43078111
-      UIButton_Animations_2: 317658153
-      UIButton_Animations_20: -1440678213
-      UIButton_Animations_21: -1849917885
-      UIButton_Animations_22: -1293439427
-      UIButton_Animations_23: -1200282345
-      UIButton_Animations_24: 511646095
-      UIButton_Animations_25: -1748729885
-      UIButton_Animations_26: 908638410
-      UIButton_Animations_27: -466349116
-      UIButton_Animations_28: -1418597663
-      UIButton_Animations_29: 611362306
-      UIButton_Animations_3: -1428349865
-      UIButton_Animations_30: -1924963701
-      UIButton_Animations_31: -1361596118
-      UIButton_Animations_32: -15741847
-      UIButton_Animations_33: -1519823123
-      UIButton_Animations_34: 1066553433
-      UIButton_Animations_4: 1219766915
-      UIButton_Animations_5: 1667985719
-      UIButton_Animations_6: -1198506220
-      UIButton_Animations_7: -1163267651
-      UIButton_Animations_8: -896420235
-      UIButton_Animations_9: -361058985
+      Nuclei_0: -671448743
+      Nuclei_1: 1855411098
+      Nuclei_10: -1756450781
+      Nuclei_11: 973725302
+      Nuclei_12: 306926503
+      Nuclei_13: 1983800470
+      Nuclei_14: -190075760
+      Nuclei_15: 51442973
+      Nuclei_16: 1954893844
+      Nuclei_17: 1023140574
+      Nuclei_18: -1702040938
+      Nuclei_19: -512608311
+      Nuclei_2: -1701503950
+      Nuclei_20: 1235586744
+      Nuclei_21: -360764944
+      Nuclei_22: 2002726091
+      Nuclei_23: 1168458530
+      Nuclei_24: 1635939720
+      Nuclei_3: 2043604951
+      Nuclei_4: -1254404822
+      Nuclei_5: -1085862343
+      Nuclei_6: -1509817776
+      Nuclei_7: 785778344
+      Nuclei_8: 1863561351
+      Nuclei_9: 1294558605
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
