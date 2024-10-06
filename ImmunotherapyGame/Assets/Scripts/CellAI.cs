@@ -107,6 +107,7 @@ public class CellAI : MonoBehaviour
     private void MoveCell()
     {
         // FIXME this method of generating a random velocity is likely biased. Could instead rotate the vector (1, 0) around the Z axis by a random amount (within 0-360 degrees).
+        /// Either works I think, the quadrant it gets sent to depends on the signs and the ratio between those signs determine the exact angle before we normalize the vector
         // float xVelocity = Random.Range(-1f, 1f);
         // float yVelocity = Random.Range(-1f, 1f);
         Vector2 velocity = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.forward) * Vector2.right;
