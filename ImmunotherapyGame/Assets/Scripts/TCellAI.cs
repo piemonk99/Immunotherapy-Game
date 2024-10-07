@@ -14,15 +14,18 @@ public class TCellAI : MonoBehaviour
     [SerializeField] private float chaseIntervalMin = 0.1f;
     [SerializeField] private float chaseIntervalMax = 0.3f;
 
-    private CellFactory cellManager;
+    private CellFactory cellFactory;
     private CellAI target;
 
     private float wanderDelay;
     private float chaseDelay;
 
+    private bool isInTutorial;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        isInTutorial = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TutorialScene"; // Check if current scene is TutorialScene
     }
 
     private void Update()
@@ -32,7 +35,7 @@ public class TCellAI : MonoBehaviour
             CellAI nearestTarget = null;
             float nearestTargetDistance = 0f;
 
-            foreach (CellAI cell in cellManager.GetCells())
+            foreach (CellAI cell in cellFactory.GetCells())
             {
                 float distance = Vector2.Distance(cell.transform.position, transform.position);
 
@@ -55,8 +58,6 @@ public class TCellAI : MonoBehaviour
         }
         else
         {
-            // TODO add actual pathfinding (probably use node-based system)
-            // The procedure would be to find the node nearest to the target and path to it using A* or a similar algorithm. If the T-cell is already at the nearest node, it just moves directly towards the target, as it does now.
             chaseDelay -= Time.deltaTime;
 
             if (chaseDelay <= 0)
@@ -74,7 +75,6 @@ public class TCellAI : MonoBehaviour
 
     private void MoveCell(Vector2 velocity)
     {
-        // Normalize velocity to match the set speed
         float normalizationFactor = speed / (Mathf.Abs(velocity.x) + Mathf.Abs(velocity.y));
         rb.AddForce(velocity * normalizationFactor * 400f * Time.deltaTime * 60);
     }
@@ -84,23 +84,21 @@ public class TCellAI : MonoBehaviour
         AdjustDragBasedOnSpeed();
     }
 
-    //This function increases the drag when velocity exceeds maxSpeed
     private void AdjustDragBasedOnSpeed()
     {
-        //Check if the velocity exceeds maxSpeed
         if (rb.velocity.magnitude > maxSpeed)
         {
-            rb.drag = increasedDrag;  //Apply increased drag to slow down the object
+            rb.drag = increasedDrag;
         }
         else
         {
-            rb.drag = normalDrag;     //Reset to normal drag
+            rb.drag = normalDrag;
         }
     }
 
-    public void SetCellManager(CellFactory cellManagerIn)
+    public void SetCellFactory(CellFactory cellFactoryIn)
     {
-        cellManager = cellManagerIn;
+        cellFactory = cellFactoryIn;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -110,7 +108,11 @@ public class TCellAI : MonoBehaviour
         if (cell != null && cell.IsMarked())
         {
             cell.Die();
-            cellManager.GetCells().Remove(cell);
+            cellFactory.GetCells().Remove(cell);
+            if (isInTutorial && cell.GetIsCancer())
+            {
+                TutorialEventManager.DoCellDestroyed();
+            }
         }
     }
 }

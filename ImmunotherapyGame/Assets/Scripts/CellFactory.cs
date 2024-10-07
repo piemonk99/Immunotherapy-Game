@@ -26,6 +26,7 @@ public class CellFactory
         RandomizeCell(newCell);
         newCell.GetComponent<CellAI>().SetCellBehavior(isCancer, usedAnimations.ToArray());
         newCell.GetComponent<CellAI>().SetCurrencyPrefab(currencyPrefab);
+        newCell.GetComponent<CellAI>().SetCellFactory(this);
         cells.Add(newCell.GetComponent<CellAI>());
         return newCell;
     }
@@ -33,9 +34,18 @@ public class CellFactory
     public GameObject CreateTCell(Vector3 position)
     {
         GameObject newTCell = GameObject.Instantiate(tCellPrefab, position, Quaternion.identity);
-        newTCell.GetComponent<TCellAI>().SetCellManager(this);
+        newTCell.GetComponent<TCellAI>().SetCellFactory(this);
         return newTCell;
     }
+
+    public void RemoveCell(CellAI cell)
+    {
+        if (cells.Contains(cell))
+        {
+            cells.Remove(cell);
+        }
+    }
+
 
     public void RandomizeCell(GameObject cell)
     {

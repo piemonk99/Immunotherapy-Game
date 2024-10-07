@@ -19,9 +19,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bindingModeText;
     [SerializeField] private TextMeshProUGUI currencyAmountText;
 
+    private bool isInTutorial; // Flag to check if we are in the tutorial scene
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        isInTutorial = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TutorialScene"; // Check if current scene is TutorialScene
     }
 
     private void Update()
@@ -43,21 +46,16 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
     }
 
     public void MovePlayer(float moveHorizontal, float moveVertical)
     {
-        //Get input as a normalized vector
         movementInput = new Vector2(moveHorizontal, moveVertical).normalized;
 
-        //Apply force to the player, scaled by acceleration
         rb.AddForce(movementInput * acceleration);
 
-        //Clamp the player's velocity to the max move speed
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, moveSpeed);
 
-        //Rotate the player to face movement direction if moving
         if (rb.velocity.magnitude > 0.1f)
         {
             RotateTowardsMovement(rb.velocity);
@@ -66,13 +64,10 @@ public class PlayerController : MonoBehaviour
 
     private void RotateTowardsMovement(Vector2 movementDirection)
     {
-        //Calculate the angle to rotate based on movement direction
         float targetAngle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg;
 
-        //Lerp the rotation to smoothly face the movement direction
         float smoothedAngle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle, rotationLerpSpeed * Time.deltaTime);
 
-        //Apply the smoothed rotation to the player
         transform.rotation = Quaternion.Euler(0f, 0f, smoothedAngle);
     }
 
@@ -80,6 +75,12 @@ public class PlayerController : MonoBehaviour
     {
         bindingMode = !bindingMode;
         bindingModeText.text = bindingMode ? "Binding Mode Enabled" : "";
+
+        if (isInTutorial)
+        {
+            // Call the bound event for tutorial
+            TutorialEventManager.DoBindingActivated();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -90,7 +91,15 @@ public class PlayerController : MonoBehaviour
         CellAI cell = collision.gameObject.GetComponent<CellAI>();
 
         if (cell != null && !cell.IsMarked())
+        {
             cell.Mark();
+
+            if (isInTutorial && cell.GetIsCancer())
+            {
+                // Call the bound event for tutorial
+                TutorialEventManager.DoCellBound();
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -100,6 +109,12 @@ public class PlayerController : MonoBehaviour
             ++currency;
             currencyAmountText.text = $"{currency}";
             Destroy(other.gameObject);
+
+            if (isInTutorial)
+            {
+                // Call the bound event for tutorial
+                TutorialEventManager.DoPlayerPickedSample();
+            }
         }
     }
 }

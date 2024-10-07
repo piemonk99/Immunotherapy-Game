@@ -8,6 +8,8 @@ public class CellAI : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    private CellFactory cellFactory;
+
     private AnimationClip[] cellAnimations;
     private CellSpecifications cellSpecifications;
 
@@ -19,7 +21,7 @@ public class CellAI : MonoBehaviour
     [HideInInspector] public float timeAlive = 0f;
     [HideInInspector] public float timeSinceReproducing;
 
-    private bool isCancer { get; set; }
+    private bool isCancer;
     private float replicationTime; //Time in seconds before the cell replicates
     private float replicationTimer; //Countdown timer for replication
 
@@ -161,9 +163,9 @@ public class CellAI : MonoBehaviour
         }
     }
 
-    public void SetCellBehavior(bool isCancer, AnimationClip[] animations)
+    public void SetCellBehavior(bool cancer, AnimationClip[] animations)
     {
-        this.isCancer = isCancer;
+        isCancer = cancer;
 
         if (isCancer)
         {
@@ -213,7 +215,19 @@ public class CellAI : MonoBehaviour
         }
 
         dead = true;
-        Destroy(gameObject);
+        DestroyCell();
+    }
+
+    public void SetCellFactory(CellFactory factory)
+    {
+        cellFactory = factory;
+    }
+
+    public void DestroyCell()
+    {
+        // Notify the factory before destroying
+        cellFactory.RemoveCell(this);
+        Destroy(gameObject); // Destroy the GameObject
     }
 
     public void SetCurrencyPrefab(GameObject currency)
