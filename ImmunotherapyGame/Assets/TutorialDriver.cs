@@ -45,35 +45,35 @@ public class TutorialDriver : MonoBehaviour
     {
         dialogue = new List<string>
         {
-            /*0*/ "Welcome to ImmunoDetective! This is a game where you’ll experience the wonders of immunotherapy, a method of treatment used to treat certain kinds of cancer, such as lymphoma, leukemia, brain cancer, and others.",
+            /*0*/ "Welcome to ImmunoDetective! This is a game where you'll experience the wonders of immunotherapy, a method of treatment used to treat certain kinds of cancer, such as lymphoma, leukemia, brain cancer, and others.",
             /*1*/ "Immunotherapy works by strengthening the immune system, effectively teaching it how to deal with unwanted cells, such as cancer cells.",
-            /*2*/ "In this game, you’ll be playing as a monoclonal antibody, a lab-made protein that is used to mimic natural antibodies in the human body. Your job is to find the cancer cells, and mark them for immune cells to eradicate.",
-            /*3*/ "First, let’s start with the basics. Tap and hold the screen to move in the direction you want to go.",
-            /*4*/ "Great job! Now, let’s take a look at the different kinds of cells you’ll be encountering.",
-            /*5*/ "These are normal cells. They’re very important; they perform tasks that are important in maintaining a healthy body.",
-            /*6*/ "Now, these are cancer cells. They’re very dangerous. If they are allowed to multiply enough, they can be devastating to the body.",
+            /*2*/ "In this game, you'll be playing as a monoclonal antibody, a lab-made protein that is used to mimic natural antibodies in the human body. Your job is to find the cancer cells, and mark them for immune cells to eradicate.",
+            /*3*/ "First, let's start with the basics. Tap and hold the screen to move in the direction you want to go.",
+            /*4*/ "Great job! Now, let's take a look at the different kinds of cells you'll be encountering.",
+            /*5*/ "These are normal cells. They're very important; they perform tasks that are important in maintaining a healthy body.",
+            /*6*/ "Now, these are cancer cells. They're very dangerous. If they are allowed to multiply enough, they can be devastating to the body.",
             /*7*/ "You can tell these cells apart based on certain characteristics and behaviors. We can see that these cancer cells are different based on the way they are moving.",
-            /*8*/ "Next, let’s teach you how to take care of these pesky cells. The job of the monoclonal antibody is to bind to cancer cells, marking them for the immune system to destroy.",
-            /*9*/ "Press the ‘BIND’ button to enter binding mode.",
+            /*8*/ "Next, let's teach you how to take care of these pesky cells. The job of the monoclonal antibody is to bind to cancer cells, marking them for the immune system to destroy.",
+            /*9*/ "Press the 'BIND' button to enter binding mode.",
             /*10*/ "With binding mode, you can bind to any cell and mark them to be destroyed. But be careful! We only want to destroy the cancer cells. Try binding to a cancer cell.",
             /*11*/ "Now, the cancer cell is emitting a signal that will get the attention of the immune system, which will send its cells to destroy it.",
-            /*12*/ "This is the main goal. We want to destroy all of the cancer cells, and ensure that we maintain a healthy normal cell count, which is why it’s important to make sure you’re marking the correct cells!",
+            /*12*/ "This is the main goal. We want to destroy all of the cancer cells, and ensure that we maintain a healthy normal cell count, which is why it's important to make sure you're marking the correct cells!",
             /*13*/ "Observe the body's response to the marked cell: ",
             /*14*/ "Look there. The cancer cell that was destroyed has dropped a sample! Move over to it and pick it up.",
             /*15*/ "These are genetic samples of a cancer cell. They are crucial to our immunotherapy research, and they allow us to use more tools to dispose of cancer cells.",
-            /*16*/ "These samples can be used to buy useful items to help you track down those pesky cancer cells. Let’s open the shop and take a look!",
-            /*17*/ "Let’s purchase a vaccine!",
+            /*16*/ "These samples can be used to buy useful items to help you track down those pesky cancer cells. Let's open the shop and take a look!",
+            /*17*/ "Let's purchase a vaccine!",
             /*18*/ "The vaccine will spawn a harmless cancer cell, which will allow you to analyze it. It is important to take note of the appearance and behaviors of this cell, as it will give you a better idea of which cells to target.",
-            /*19*/ "Let’s try using the vaccine! Tap the vaccine in your inventory to use it.",
+            /*19*/ "Let's try using the vaccine! Tap the vaccine in your inventory to use it.",
             /*20*/ "This is a harmless cancer cell. Observe it carefully to have a good idea of which cells you should be targeting!",
-            /*21*/ "Now, let’s take a look at the second item in the shop. Let’s purchase a protein analysis!",
+            /*21*/ "Now, let's take a look at the second item in the shop. Let's purchase a protein analysis!",
             /*22*/ "The protein analysis will allow you to get a look at what proteins are present inside of a cell, which will help you determine if it is a normal cell or a cancer cell. Cancer cells will use certain proteins to hide themselves from the other cells.",
             /*23*/ "Use the protein analysis on this cell.",
             /*24*/ "As you can see, there are many proteins that are present in this cell. One to note in particular is the CD47 protein. This protein sends signals to other cells, as a way to protect the cancer cell from being destroyed.",
             /*25*/ "That means that this is a cancer cell, and it must be destroyed. Bind to the cell to mark it to be destroyed.",
-            /*26*/ "Finally, let’s take a look at the last item in the shop. Let’s purchase a CAR T Cell!",
-            /*27*/ "A CAR T Cell is a chimeric antigen receptor T cell that is produced from T cells in the patient’s blood. It can find and kill cancer cells in the area.",
-            /*28*/ "Let’s use the CAR T Cell!",
+            /*26*/ "Finally, let's take a look at the last item in the shop. Let's purchase a CAR T Cell!",
+            /*27*/ "A CAR T Cell is a chimeric antigen receptor T cell that is produced from T cells in the patient's blood. It can find and kill cancer cells in the area.",
+            /*28*/ "Let's use the CAR T Cell!",
             /*29*/ "As you can see, the CAR T Cell destroyed the cancer cells in this vicinity, dropping more genetic samples for you to use.",
             /*30*/ "This is the end of the tutorial level. Good luck!"
         };
@@ -139,6 +139,9 @@ public class TutorialDriver : MonoBehaviour
     }
     private void ActivateSceneObjects()
     {
+        // FIXME Cells can be spawned outside of the level bounds
+        // The fix is simple: limit the positions to be within a certain radius of the origin   
+
         // Activate scene objects based on the current dialogue index
         switch (currentDialogueIndex)
         {
