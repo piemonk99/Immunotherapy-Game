@@ -329,9 +329,9 @@ GameObject:
   - component: {fileID: 414429521}
   - component: {fileID: 414429523}
   - component: {fileID: 414429522}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Level Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -708,9 +708,9 @@ GameObject:
   - component: {fileID: 767890682}
   - component: {fileID: 767890684}
   - component: {fileID: 767890683}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Level Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -935,35 +935,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Inventory, Assembly-CSharp
       objectReference: {fileID: 0}
-    - target: {fileID: 6479582956598187444, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
-    - target: {fileID: 5823071098698081247, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823071098698081247, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823071098698081247, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1429016877}
-    - target: {fileID: 5823071098698081247, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823071098698081247, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TogglePause
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823071098698081247, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HUD, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823071098698081247, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6493757832090511655, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1082,9 +1053,9 @@ GameObject:
   - component: {fileID: 1268968404}
   - component: {fileID: 1268968406}
   - component: {fileID: 1268968405}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Level Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1710,9 +1681,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1669805888}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Level Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1735,6 +1706,7 @@ Transform:
   - {fileID: 1998715886}
   - {fileID: 414429521}
   - {fileID: 1268968404}
+  - {fileID: 2079755936}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1679214708 stripped
@@ -1880,9 +1852,9 @@ GameObject:
   - component: {fileID: 1910873826}
   - component: {fileID: 1910873828}
   - component: {fileID: 1910873827}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Level Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2094,9 +2066,9 @@ GameObject:
   - component: {fileID: 1998715886}
   - component: {fileID: 1998715888}
   - component: {fileID: 1998715887}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: Level Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2224,9 +2196,9 @@ GameObject:
   - component: {fileID: 2079755936}
   - component: {fileID: 2079755935}
   - component: {fileID: 2079755934}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RingWall
-  m_TagString: Untagged
+  m_TagString: Level Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2704,12 +2676,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079755933}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3302835, y: -0.44535634, z: 0.05494044}
   m_LocalScale: {x: 2.75, y: 2.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1669805888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -2720,7 +2692,6 @@ SceneRoots:
   - {fileID: 1929939484}
   - {fileID: 1669805888}
   - {fileID: 356286322}
-  - {fileID: 2079755936}
   - {fileID: 1589194058}
   - {fileID: 1233590486}
   - {fileID: 153890114}

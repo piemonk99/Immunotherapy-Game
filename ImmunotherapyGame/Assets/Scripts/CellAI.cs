@@ -207,7 +207,32 @@ public class CellAI : MonoBehaviour
             int currencyAmount = Random.Range(3, 5);
 
             for (var i = 0; i < currencyAmount; ++i)
-                Instantiate(currencyPrefab, transform.position + Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.forward) * Vector2.right * Random.Range(0f, 0.5f), Quaternion.identity);
+            {
+                GameObject sampleParent = new GameObject();
+                sampleParent.transform.position = transform.position;
+                sampleParent.name = "sampleParent";
+                Rigidbody2D rb = sampleParent.AddComponent<Rigidbody2D>();
+                rb.gravityScale = 0;
+                rb.drag = 1;
+
+                Instantiate(currencyPrefab, sampleParent.transform);
+
+                // Generate a random angle in radians
+                float randomAngle = Random.Range(0f, Mathf.PI * 2);
+
+                // Calculate the x and y offsets based on the random angle
+                float xOffset = Mathf.Cos(randomAngle);
+                float yOffset = Mathf.Sin(randomAngle);
+
+                // Create a random force direction vector
+                Vector2 randomDirection = new Vector2(xOffset, yOffset);
+
+                // Generate a random force magnitude (between some minimum and maximum)
+                float randomForceMagnitude = Random.Range(1f, 2f); // Adjust as needed
+
+                // Apply force in the random direction
+                sampleParent.GetComponent<Rigidbody2D>().AddForce(randomDirection * randomForceMagnitude, ForceMode2D.Impulse);
+            }
         }
 
         dead = true;

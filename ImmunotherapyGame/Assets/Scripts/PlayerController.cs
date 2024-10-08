@@ -125,7 +125,15 @@ public class PlayerController : MonoBehaviour
         {
             ++currency;
             currencyAmountText.text = $"{currency}";
-            Destroy(other.gameObject);
+
+            if (other.transform.parent.gameObject.name == "sampleParent")
+            {
+                Destroy(other.transform.parent.gameObject);
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
 
             if (isInTutorial)
             {
