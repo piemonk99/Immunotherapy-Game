@@ -137,8 +137,8 @@ MonoBehaviour:
   maxSpeed: 1.2
   increasedDrag: 0.8
   normalDrag: 0.1
-  chaseIntervalMin: 0.1
-  chaseIntervalMax: 0.3
+  chaseIntervalMin: 0.4
+  chaseIntervalMax: 1.2
 --- !u!58 &5496259966304695942
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.9
 --- !u!58 &4671831006174542889
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.9
 --- !u!50 &4383383692475346246
 Rigidbody2D:
   serializedVersion: 4

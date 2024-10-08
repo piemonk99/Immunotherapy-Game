@@ -200,7 +200,7 @@ public class TutorialDriver : MonoBehaviour
 
     public bool CanClickToAdvance()
     {
-        List<int> promptDialogueIndices = new List<int> { 3, 9, 10, 14 }; // Indices where clicking is not allowed
+        List<int> promptDialogueIndices = new List<int> { 3, 9, 10, 13, 14 }; // Indices where clicking is not allowed
         return !promptDialogueIndices.Contains(currentDialogueIndex);
     }
 }

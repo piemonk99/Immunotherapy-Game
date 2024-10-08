@@ -8,7 +8,7 @@ public class TCellAI : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] private float speed = 1;
-    [SerializeField] private float maxSpeed = 1.2f;        //The speed threshold beyond which drag will increase
+    [SerializeField] private float maxSpeed = .6f;        //The speed threshold beyond which drag will increase
     [SerializeField] private float increasedDrag = .8f;   //The drag value to apply when the speed is too high
     [SerializeField] private float normalDrag = .1f;      //The normal drag value when under the speed threshold
     [SerializeField] private float chaseIntervalMin = 0.1f;
