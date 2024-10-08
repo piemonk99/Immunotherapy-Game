@@ -10,6 +10,7 @@ public class TutorialDriver : MonoBehaviour
     [SerializeField] private Transform player;
 
     [SerializeField] private InputListener inputListener;
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private AIController aiController;
 
     [SerializeField] private TextMeshProUGUI dialogueBox;
@@ -147,6 +148,7 @@ public class TutorialDriver : MonoBehaviour
         {
             case 3:
                 inputListener.enabled = true;
+                playerController.SetAllowBinding(false);
                 break;
             case 5:
                 aiController.CreateCell(0, new Vector3(0, 2, 0) + player.position);
@@ -162,6 +164,9 @@ public class TutorialDriver : MonoBehaviour
                 aiController.DestroyAllCells();
                 aiController.CreateCell(1, new Vector3(2, 0, 0) + player.position);
                 aiController.CreateCell(1, new Vector3(-2, 0, 0) + player.position);
+                break;
+            case 9:
+                playerController.SetAllowBinding(true);
                 break;
             case 13:
                 aiController.CreateCell(2, new Vector3(0, 5, 0) + player.position);

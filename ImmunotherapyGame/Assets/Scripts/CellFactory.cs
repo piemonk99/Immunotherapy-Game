@@ -9,15 +9,17 @@ public class CellFactory
     private GameObject tCellPrefab;
     private GameObject currencyPrefab;
     private GameObject[] shapeSpritePrefabs;
+    private PlayerController playerController;
 
     private List<CellAI> cells = new List<CellAI>();
 
-    public CellFactory(GameObject cell, GameObject tCell, GameObject currency, GameObject[] shapes)
+    public CellFactory(GameObject cell, GameObject tCell, GameObject currency, GameObject[] shapes, PlayerController player)
     {
         cellPrefab = cell;
         tCellPrefab = tCell;
         currencyPrefab = currency;
         shapeSpritePrefabs = shapes;
+        playerController = player;
     }
 
     public GameObject CreateCell(Vector3 position, List<AnimationClip> usedAnimations, bool isCancer)
@@ -27,6 +29,7 @@ public class CellFactory
         newCell.GetComponent<CellAI>().SetCellBehavior(isCancer, usedAnimations.ToArray());
         newCell.GetComponent<CellAI>().SetCurrencyPrefab(currencyPrefab);
         newCell.GetComponent<CellAI>().SetCellFactory(this);
+        newCell.GetComponent<CellAI>().SetPlayerController(playerController);
         cells.Add(newCell.GetComponent<CellAI>());
         return newCell;
     }
@@ -87,6 +90,7 @@ public class CellFactory
         childCell.GetComponent<CellAI>().SetCellBehavior(parentCellAI.GetIsCancer(), usedAnimations.ToArray());
         childCell.GetComponent<CellAI>().SetCurrencyPrefab(currencyPrefab);
         childCell.GetComponent<CellAI>().SetCellFactory(this);
+        childCell.GetComponent<CellAI>().SetPlayerController(playerController);
 
         childCell.name = "Cell_" + Random.Range(1000, 9999);
 

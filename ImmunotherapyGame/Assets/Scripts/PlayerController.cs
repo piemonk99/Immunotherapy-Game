@@ -15,21 +15,25 @@ public class PlayerController : MonoBehaviour
 
     private bool bindingMode;
     private int currency;
+    private bool allowBinding = true;
 
-    [SerializeField] private TextMeshProUGUI bindingModeText;
     [SerializeField] private TextMeshProUGUI currencyAmountText;
 
-    private bool isInTutorial; // Flag to check if we are in the tutorial scene
+    [SerializeField] private bool isInTutorial;
 
     private CellAI clickedCell;
     private float clickedCellAt;
 
     [SerializeField] private float doubleClickDelay = 0.4f;
 
+    private Animation anim;
+
+    [SerializeField] private Transform spritePivot;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        isInTutorial = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TutorialScene"; // Check if current scene is TutorialScene
+        anim = gameObject.GetComponent<Animation>();
     }
 
     private void Update()
@@ -90,8 +94,11 @@ public class PlayerController : MonoBehaviour
 
     public void ToggleBindingMode()
     {
+        if (!allowBinding)
+            return;
+
         bindingMode = !bindingMode;
-        bindingModeText.text = bindingMode ? "Binding Mode Enabled" : "";
+        spritePivot.localRotation = Quaternion.Euler(0, 0, bindingMode ? -90 : 90);
 
         if (isInTutorial)
         {
@@ -133,5 +140,15 @@ public class PlayerController : MonoBehaviour
                 TutorialEventManager.DoPlayerPickedSample();
             }
         }
+    }
+
+    public void SetAllowBinding(bool allow)
+    {
+        allowBinding = allow;
+    }
+
+    public bool IsBindingModeEnabled()
+    {
+        return bindingMode;
     }
 }
