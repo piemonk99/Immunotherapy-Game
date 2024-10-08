@@ -51,13 +51,13 @@ public class CellAI : MonoBehaviour
         replicationTimer = replicationTime * randomTimeCoefficient;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // Marked cells do not replicate to avoid the case where all of the cancer cells have been marked but they replicate too quickly for the immune cells to kill them all.
         if (!IsMarked())
             HandleReplicationTimer();
 
-        activityWaitDelay -= Time.deltaTime;
+        activityWaitDelay -= Time.fixedDeltaTime;
 
         if (activityWaitDelay <= 0)
         {
@@ -65,14 +65,15 @@ public class CellAI : MonoBehaviour
             activityWaitDelay += Random.Range(3f, 8f);
         }
         
-        timeAlive += Time.deltaTime;
-        timeSinceReproducing += Time.deltaTime;
+        timeAlive += Time.fixedDeltaTime;
+        timeSinceReproducing += Time.fixedDeltaTime;
+        AdjustDragBasedOnSpeed();
     }
 
     //Method to handle the replication countdown
     private void HandleReplicationTimer()
     {
-        replicationTimer -= Time.deltaTime;
+        replicationTimer -= Time.fixedDeltaTime;
 
         if (replicationTimer <= 0)
         {
@@ -117,12 +118,7 @@ public class CellAI : MonoBehaviour
         // Normalize velocity to match the set speed
         float normalizationFactor = speed / (Mathf.Abs(velocity.x) + Mathf.Abs(velocity.y));
 
-        rb.AddForce(new Vector2(velocity.x * normalizationFactor, velocity.y * normalizationFactor) * 400f * Time.deltaTime * 60);
-    }
-
-    void FixedUpdate()
-    {
-        AdjustDragBasedOnSpeed();
+        rb.AddForce(new Vector2(velocity.x * normalizationFactor, velocity.y * normalizationFactor) * 400f);
     }
 
     //This function increases the drag when velocity exceeds maxSpeed

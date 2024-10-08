@@ -62,11 +62,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void MovePlayer(float moveHorizontal, float moveVertical)
+    private void FixedUpdate()
     {
-        movementInput = new Vector2(moveHorizontal, moveVertical).normalized;
-
-        rb.AddForce(movementInput * acceleration * Time.deltaTime * 60);
+        rb.AddForce(movementInput * acceleration);
 
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, moveSpeed);
 
@@ -74,6 +72,11 @@ public class PlayerController : MonoBehaviour
         {
             RotateTowardsMovement(rb.velocity);
         }
+    }
+
+    public void MovePlayer(float moveHorizontal, float moveVertical)
+    {
+        movementInput = new Vector2(moveHorizontal, moveVertical).normalized;
     }
 
     private void RotateTowardsMovement(Vector2 movementDirection)

@@ -28,7 +28,7 @@ public class TCellAI : MonoBehaviour
         isInTutorial = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TutorialScene"; // Check if current scene is TutorialScene
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (target == null)
         {
@@ -48,7 +48,7 @@ public class TCellAI : MonoBehaviour
 
             target = nearestTarget;
             // Randomly wander when no cells are marked
-            wanderDelay -= Time.deltaTime;
+            wanderDelay -= Time.fixedDeltaTime;
 
             if (wanderDelay <= 0)
             {
@@ -58,7 +58,7 @@ public class TCellAI : MonoBehaviour
         }
         else
         {
-            chaseDelay -= Time.deltaTime;
+            chaseDelay -= Time.fixedDeltaTime;
 
             if (chaseDelay <= 0)
             {
@@ -66,6 +66,8 @@ public class TCellAI : MonoBehaviour
                 chaseDelay += Random.Range(chaseIntervalMin, chaseIntervalMax);
             }
         }
+
+        AdjustDragBasedOnSpeed();
     }
 
     private void Wander()
@@ -76,12 +78,7 @@ public class TCellAI : MonoBehaviour
     private void MoveCell(Vector2 velocity)
     {
         float normalizationFactor = speed / (Mathf.Abs(velocity.x) + Mathf.Abs(velocity.y));
-        rb.AddForce(velocity * normalizationFactor * 400f * Time.deltaTime * 60);
-    }
-
-    void FixedUpdate()
-    {
-        AdjustDragBasedOnSpeed();
+        rb.AddForce(velocity * normalizationFactor * 400f);
     }
 
     private void AdjustDragBasedOnSpeed()
