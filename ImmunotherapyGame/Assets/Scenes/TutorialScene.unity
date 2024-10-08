@@ -549,10 +549,11 @@ MonoBehaviour:
   - {fileID: 7400000, guid: f6b8cf7e15c2e584c8fdd5ea3fc1c993, type: 2}
   - {fileID: 7400000, guid: 0afaa62cfda9d8b49ab3a1e46a8a1c8e, type: 2}
   shapeSpritePrefabs:
-  - {fileID: 8179944854343697984, guid: 5a81d1b06af46d845ad6b3668f3ca8ac, type: 3}
-  - {fileID: 4537274165129098650, guid: a836f9ed82c7c964ea3458c1412bbc4a, type: 3}
-  - {fileID: 3193380970929199708, guid: d39cd81ad0e999245957c0620e1a9805, type: 3}
-  - {fileID: 8930270283067588418, guid: 6efcb771d84b993438c6b2b06f4d06e3, type: 3}
+  - {fileID: 5825974109370991395, guid: 88720ad7ec844e84bacbfceedec1b36c, type: 3}
+  - {fileID: 9155763869080903352, guid: f97a82d265a08c3469380900f9063c79, type: 3}
+  - {fileID: 6167081100805831851, guid: e5a0614936311fc45854fb962dd0d6f2, type: 3}
+  - {fileID: 3992936736369408746, guid: 0043a9359efae4b4a8c4594a66e47030, type: 3}
+  - {fileID: 2745926154680482208, guid: 6afa209839dd07e44a9711d1b11d46bc, type: 3}
 --- !u!4 &356286322
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,7 +1051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8353116091879875133, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
