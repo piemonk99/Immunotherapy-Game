@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72c8ccc2638ac7a409a38a3a8a32f20f
+guid: 4f62fba029151db4ba7f734b1b448229
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,127 +97,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SampleBobAnimFrames_0
+      name: Base_Sprite
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 045699787f505d542a134a37af822456
-      internalID: -167719121
+      spriteID: 31225ab23db00a947beb45ec38415a35
+      internalID: -1673990012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SampleBobAnimFrames_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6030857efa6bab043845ca8dc4866eb8
-      internalID: 961083610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SampleBobAnimFrames_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 908b873aa0312214c8ea8178cb989e6b
-      internalID: -334196785
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SampleBobAnimFrames_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1058ae1a6dea0d641a3a344c91032156
-      internalID: -1451657025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SampleBobAnimFrames_4
+      name: Binding_Antigen1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72891ce1698bcd948a82c00879289a9f
-      internalID: -1042466630
+      spriteID: c13cbdd75117e174c81ea5e3f39dec46
+      internalID: -1496227926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SampleBobAnimFrames_5
+      name: Binding_Antigen2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 128
         y: 0
-        width: 16
-        height: 16
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40421e5813ebead4a89f30042621b18e
-      internalID: -1216349139
+      spriteID: c4b9bad82db52d14dba7a915b1a66fed
+      internalID: -900652780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Binding_Antigen3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1cab4e2a548f634fac3051d2be779da
+      internalID: 950580975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Binding_Signal1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1644d4e519c760046aa06975e26c7641
+      internalID: 1510480972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Binding_Signal2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b16d0bbd3f609741a4180d82b540862
+      internalID: -1238569562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Binding_Signal3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49136a0d271bab84384ea9e7dd023869
+      internalID: -201377660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Binding_Signal4
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb884b52974527c45a55f85f438cc58e
+      internalID: 770217162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Binding_Signal5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1992be45b0b4d545807043d656c1a18
+      internalID: -1350799303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Binding_Signal6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b904670d1bd9a04eb313930a337587f
+      internalID: 1574107866
       vertices: []
       indices: 
       edges: []
@@ -233,12 +317,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SampleBobAnimFrames_0: -167719121
-      SampleBobAnimFrames_1: 961083610
-      SampleBobAnimFrames_2: -334196785
-      SampleBobAnimFrames_3: -1451657025
-      SampleBobAnimFrames_4: -1042466630
-      SampleBobAnimFrames_5: -1216349139
+      Base_Sprite: -1673990012
+      Binding_Antigen1: -1496227926
+      Binding_Antigen2: -900652780
+      Binding_Antigen3: 950580975
+      Binding_Signal1: 1510480972
+      Binding_Signal2: -1238569562
+      Binding_Signal3: -201377660
+      Binding_Signal4: 770217162
+      Binding_Signal5: -1350799303
+      Binding_Signal6: 1574107866
+      Cell_10: 58289790
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

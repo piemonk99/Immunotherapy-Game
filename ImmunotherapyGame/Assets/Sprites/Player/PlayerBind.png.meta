@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72c8ccc2638ac7a409a38a3a8a32f20f
+guid: 299ac78d1d56a0d43803c4664618dfc3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SampleBobAnimFrames_0
+      name: PlayerBind_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,41 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 045699787f505d542a134a37af822456
-      internalID: -167719121
+      spriteID: 0c0a498cdd57721439d2982869d5111e
+      internalID: 1532913908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SampleBobAnimFrames_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6030857efa6bab043845ca8dc4866eb8
-      internalID: 961083610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SampleBobAnimFrames_2
+      name: PlayerBind_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,41 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 908b873aa0312214c8ea8178cb989e6b
-      internalID: -334196785
+      spriteID: 83a972b35fa0d7b4491f974e5bf172ee
+      internalID: -1381803636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SampleBobAnimFrames_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1058ae1a6dea0d641a3a344c91032156
-      internalID: -1451657025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SampleBobAnimFrames_4
+      name: PlayerBind_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72891ce1698bcd948a82c00879289a9f
-      internalID: -1042466630
+      spriteID: ad87ce83df260fb47b8eef1f26137db4
+      internalID: 838637670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SampleBobAnimFrames_5
+      name: PlayerBind_3
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,8 +174,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40421e5813ebead4a89f30042621b18e
-      internalID: -1216349139
+      spriteID: 61ff659a2423b6e4493b4bb1ead43016
+      internalID: 1592526198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerBind_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 655d4ba7dd3bdb6439d7fb87b8f85dbe
+      internalID: -287310929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerBind_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c302a1a91e6eef54d9688cc9ffc84155
+      internalID: 1200016379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerBind_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0426abd41fdd0dc4d9c0389aac1a8eba
+      internalID: -362757974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerBind_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769c598cd7a10a34ebfbbd00d327370f
+      internalID: 1335811277
       vertices: []
       indices: 
       edges: []
@@ -233,12 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SampleBobAnimFrames_0: -167719121
-      SampleBobAnimFrames_1: 961083610
-      SampleBobAnimFrames_2: -334196785
-      SampleBobAnimFrames_3: -1451657025
-      SampleBobAnimFrames_4: -1042466630
-      SampleBobAnimFrames_5: -1216349139
+      PlayerBind_0: 1532913908
+      PlayerBind_1: -1381803636
+      PlayerBind_2: 838637670
+      PlayerBind_3: 1592526198
+      PlayerBind_4: -287310929
+      PlayerBind_5: 1200016379
+      PlayerBind_6: -362757974
+      PlayerBind_7: 1335811277
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
