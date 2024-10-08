@@ -86,6 +86,7 @@ public class CellFactory
         );
         childCell.GetComponent<CellAI>().SetCellBehavior(parentCellAI.GetIsCancer(), usedAnimations.ToArray());
         childCell.GetComponent<CellAI>().SetCurrencyPrefab(currencyPrefab);
+        childCell.GetComponent<CellAI>().SetCellFactory(this);
 
         childCell.name = "Cell_" + Random.Range(1000, 9999);
 

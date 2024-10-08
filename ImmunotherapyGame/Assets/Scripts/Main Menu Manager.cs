@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +7,6 @@ public class MainMenuManager : MonoBehaviour
 {
     public void StartButtonClicked()
     {
-        SceneManager.LoadScene("Level1Scene");
+        SceneManager.LoadScene("TutorialScene");
     }
 }

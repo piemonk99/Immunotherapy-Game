@@ -12,6 +12,8 @@ public class InputListener : MonoBehaviour
     private bool verticalMovedNegative = false;
     private bool tutorialActive = false;
 
+    private Vector2 tapStartPosition;
+
     void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -33,6 +35,16 @@ public class InputListener : MonoBehaviour
         // Capture WASD or Arrow keys input
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetMouseButtonDown(0))
+            tapStartPosition = Input.mousePosition;
+
+        if (Input.GetMouseButton(0))
+        {
+            Vector2 tapDirection = (new Vector2(Input.mousePosition.x, Input.mousePosition.y) - tapStartPosition).normalized;
+            moveHorizontal = tapDirection.x;
+            moveVertical = tapDirection.y;
+        }
 
         // Send the input to PlayerController to move the player
         if (playerController != null)

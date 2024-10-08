@@ -21,6 +21,11 @@ public class PlayerController : MonoBehaviour
 
     private bool isInTutorial; // Flag to check if we are in the tutorial scene
 
+    private CellAI clickedCell;
+    private float clickedCellAt;
+
+    [SerializeField] private float doubleClickDelay = 0.4f;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,8 +46,17 @@ public class PlayerController : MonoBehaviour
                 CellAI cellAI = hit.transform.GetComponent<CellAI>();
                 if (cellAI != null)
                 {
-                    infoPanel.SetActive(true);
-                    infoPanel.GetComponent<InfoPanel>().UpdateInfo(cellAI);
+                    if (clickedCell != cellAI || Time.time - clickedCellAt > doubleClickDelay)
+                    {
+                        clickedCell = cellAI;
+                        clickedCellAt = Time.time;
+                    }
+                    else
+                    {
+                        infoPanel.SetActive(true);
+                        infoPanel.GetComponent<InfoPanel>().UpdateInfo(cellAI);
+                        clickedCell = null;
+                    }
                 }
             }
         }
@@ -52,7 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         movementInput = new Vector2(moveHorizontal, moveVertical).normalized;
 
-        rb.AddForce(movementInput * acceleration);
+        rb.AddForce(movementInput * acceleration * Time.deltaTime * 60);
 
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, moveSpeed);
 
