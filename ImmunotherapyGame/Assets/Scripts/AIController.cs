@@ -20,6 +20,8 @@ public class AIController : MonoBehaviour
     // List to store all instantiated cells
     private List<GameObject> allCells;
 
+    [SerializeField] private PlayerController playerController;
+
     private void Start()
     {
         usedAnimations = new List<AnimationClip>();
@@ -30,7 +32,7 @@ public class AIController : MonoBehaviour
             allCellAnimations.RemoveAt(rand);
         }
 
-        cellFactory = new CellFactory(cellPrefab, tCellPrefab, currencyPrefab, shapeSpritePrefabs);
+        cellFactory = new CellFactory(cellPrefab, tCellPrefab, currencyPrefab, shapeSpritePrefabs, playerController);
         allCells = new List<GameObject>(); // Initialize the cell list
 
         // Instantiate the cells

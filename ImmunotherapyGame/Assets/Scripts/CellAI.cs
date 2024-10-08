@@ -18,6 +18,8 @@ public class CellAI : MonoBehaviour
     [SerializeField] private float increasedDrag = .8f;   //The drag value to apply when the speed is too high
     [SerializeField] private float normalDrag = .1f;      //The normal drag value when under the speed threshold
 
+    [SerializeField] private float displayAntigenDistance = 8;
+
     [HideInInspector] public float timeAlive = 0f;
     [HideInInspector] public float timeSinceReproducing;
 
@@ -34,6 +36,8 @@ public class CellAI : MonoBehaviour
 
     private GameObject currencyPrefab;
 
+    private PlayerController playerController;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,6 +53,14 @@ public class CellAI : MonoBehaviour
         //Initialize the replication timer
         float randomTimeCoefficient = (Random.value * .4f) + .8f;
         replicationTimer = replicationTime * randomTimeCoefficient;
+    }
+
+    private void Update()
+    {
+        if (!IsMarked() && playerController.IsBindingModeEnabled() && Vector2.Distance(transform.position, playerController.transform.position) <= displayAntigenDistance)
+            animator.SetBool("ExposeAntigen", true);
+        else
+            animator.SetBool("ExposeAntigen", false);
     }
 
     private void FixedUpdate()
@@ -254,6 +266,11 @@ public class CellAI : MonoBehaviour
     public void SetCurrencyPrefab(GameObject currency)
     {
         currencyPrefab = currency;
+    }
+
+    public void SetPlayerController(PlayerController player)
+    {
+        playerController = player;
     }
 }
 
