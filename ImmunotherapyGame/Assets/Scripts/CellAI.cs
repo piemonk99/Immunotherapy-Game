@@ -226,7 +226,7 @@ public class CellAI : MonoBehaviour
         if (dead)
             return;
 
-        if (isCancer)
+        if (isCancer && !dummy)
         {
             int currencyAmount = Random.Range(3, 5);
 
