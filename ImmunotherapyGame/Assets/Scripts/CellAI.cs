@@ -41,6 +41,8 @@ public class CellAI : MonoBehaviour
 
     [SerializeField] private Transform bindingPoint;
 
+    private bool dummy; // For vaccine-spawned cancer cells
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -71,7 +73,7 @@ public class CellAI : MonoBehaviour
         if (!binding)
         {
             // Marked cells do not replicate to avoid the case where all of the cancer cells have been marked but they replicate too quickly for the immune cells to kill them all.
-            if (!IsMarked())
+            if (!IsMarked() && !dummy)
                 HandleReplicationTimer();
 
             activityWaitDelay -= Time.fixedDeltaTime;
@@ -113,7 +115,7 @@ public class CellAI : MonoBehaviour
     public void DecideActivity()
     {
         if (goingToDoActivity) DoActivity();
-        else MoveCell(); // Move cell if not animating - every action animation will have an event at the end that will tell the cell to move.
+        else if (!dummy) MoveCell(); // Move cell if not animating - every action animation will have an event at the end that will tell the cell to move.
 
         // Randomly decides if, before the next movement, the cell is going to do an animation
         double rand = Random.value;
@@ -291,6 +293,11 @@ public class CellAI : MonoBehaviour
     public Transform GetBindingPoint()
     {
         return bindingPoint;
+    }
+
+    public void SetDummy(bool value)
+    {
+        dummy = value;
     }
 }
 
