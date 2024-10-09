@@ -23,9 +23,9 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         // Initialize all item counts to a starting value
-        itemInventory[ItemType.Vaccine] = 1;
-        itemInventory[ItemType.ProteinAnalyzer] = 1;
-        itemInventory[ItemType.CAR_T_Cell] = 1;
+        itemInventory[ItemType.Vaccine] = 0;
+        itemInventory[ItemType.ProteinAnalyzer] = 0;
+        itemInventory[ItemType.CAR_T_Cell] = 0;
 
         UpdateUI(); // Update the UI initially with these starting values
     }
@@ -56,21 +56,21 @@ public class Inventory : MonoBehaviour
     // Individual functions to use specific items
     public void UseVaccine()
     {
-        UseItem(ItemType.Vaccine);
+        // UseItem(ItemType.Vaccine);
     }
 
     public void UseProteinAnalyzer()
     {
-        UseItem(ItemType.ProteinAnalyzer);
+        // UseItem(ItemType.ProteinAnalyzer);
     }
 
     public void UseCAR_T_Cell()
     {
-        UseItem(ItemType.CAR_T_Cell);
+        // UseItem(ItemType.CAR_T_Cell);
     }
 
     // Get the number of a specific item type in the inventory
-    public int GetItemCount(ItemType itemType)
+    public int GetItemAmount(ItemType itemType)
     {
         if (itemInventory.ContainsKey(itemType))
         {

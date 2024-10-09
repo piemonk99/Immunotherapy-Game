@@ -1491,6 +1491,7 @@ MonoBehaviour:
   colliders:
   - {fileID: 565316470}
   - {fileID: 1799440006}
+  inventory: {fileID: 1679214708}
 --- !u!58 &1552096721
 CircleCollider2D:
   m_ObjectHideFlags: 0

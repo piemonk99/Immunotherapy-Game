@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     private bool bindingAnimationTriggered;
 
+    [SerializeField] private Inventory inventory;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
                     else
                     {
                         infoPanel.SetActive(true);
-                        infoPanel.GetComponent<InfoPanel>().UpdateInfo(cellAI);
+                        infoPanel.GetComponent<InfoPanel>().UpdateInfo(cellAI, this);
                         clickedCell = null;
                     }
                 }
@@ -198,5 +200,10 @@ public class PlayerController : MonoBehaviour
     public bool IsBindingModeEnabled()
     {
         return bindingMode;
+    }
+
+    public Inventory GetInventory()
+    {
+        return inventory;
     }
 }

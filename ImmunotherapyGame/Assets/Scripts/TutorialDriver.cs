@@ -76,7 +76,7 @@ public class TutorialDriver : MonoBehaviour
             /*26*/ "Finally, let's take a look at the last item in the shop. Let's purchase a CAR T Cell!",
             /*27*/ "A CAR T Cell is a chimeric antigen receptor T cell that is produced from T cells in the patient's blood. It can find and kill cancer cells in the area.",
             /*28*/ "Let's use the CAR T Cell!",
-            /*29*/ "As you can see, the CAR T Cell destroyed the cancer cells in this vicinity, dropping more genetic samples for you to use.",
+            /*29*/ "As you can see, the CAR T Cell destroyed the cancer cells, which dropped more genetic samples for you to use.",
             /*30*/ "This is the end of the tutorial level. Good luck!"
         };
     }
