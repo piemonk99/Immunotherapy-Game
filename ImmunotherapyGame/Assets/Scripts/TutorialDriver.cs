@@ -100,7 +100,7 @@ public class TutorialDriver : MonoBehaviour
         // If we've reached the end of dialogue, return to the main menu
         if (currentDialogueIndex >= dialogue.Count)
         {
-            SceneManager.LoadScene("MainMenuScene       ");
+            SceneManager.LoadScene("MainMenuScene");
             return;
         }
 
