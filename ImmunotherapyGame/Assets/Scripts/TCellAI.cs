@@ -13,6 +13,7 @@ public class TCellAI : MonoBehaviour
     [SerializeField] private float normalDrag = .1f;      //The normal drag value when under the speed threshold
     [SerializeField] private float chaseIntervalMin = 0.1f;
     [SerializeField] private float chaseIntervalMax = 0.3f;
+    [SerializeField] private float detectCancerChance = 0.05f; // Chance per second per cancer cell that a CAR T cell will target the cancer cell
 
     private CellFactory cellFactory;
     private CellAI target;
@@ -21,6 +22,8 @@ public class TCellAI : MonoBehaviour
     private float chaseDelay;
 
     private bool isInTutorial;
+
+    private bool detectCancer;
 
     private void Start()
     {
@@ -39,7 +42,7 @@ public class TCellAI : MonoBehaviour
             {
                 float distance = Vector2.Distance(cell.transform.position, transform.position);
 
-                if (cell.IsMarked() && (nearestTarget == null || distance < nearestTargetDistance))
+                if ((cell.IsMarked() || (detectCancer && Random.Range(0f, 1f) < detectCancerChance * Time.fixedDeltaTime)) && (nearestTarget == null || distance < nearestTargetDistance))
                 {
                     nearestTarget = cell;
                     nearestTargetDistance = distance;
@@ -102,14 +105,20 @@ public class TCellAI : MonoBehaviour
     {
         CellAI cell = other.gameObject.GetComponent<CellAI>();
 
-        if (cell != null && cell.IsMarked())
+        if (cell != null && (cell.IsMarked() || cell == target))
         {
             cell.Die();
             cellFactory.GetCells().Remove(cell);
+
             if (isInTutorial && cell.GetIsCancer())
             {
                 TutorialEventManager.DoCellDestroyed();
             }
         }
+    }
+
+    public void SetDetectCancer(bool value)
+    {
+        detectCancer = value;
     }
 }
