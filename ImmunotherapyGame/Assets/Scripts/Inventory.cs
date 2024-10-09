@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     private Dictionary<ItemType, int> itemInventory = new Dictionary<ItemType, int>();
 
     // Initialize the inventory
-    private void Start()
+    private void Awake()
     {
         // Initialize all item counts to a starting value
         itemInventory[ItemType.Vaccine] = 0;
