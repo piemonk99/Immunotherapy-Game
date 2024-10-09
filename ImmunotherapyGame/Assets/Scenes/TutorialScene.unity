@@ -582,7 +582,6 @@ GameObject:
   m_Component:
   - component: {fileID: 542719861}
   - component: {fileID: 542719862}
-  - component: {fileID: 542719863}
   m_Layer: 10
   m_Name: Player Sprite
   m_TagString: Untagged
@@ -657,24 +656,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!111 &542719863
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542719860}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: e8bab2379519ecb4c8aa967b9289f86d, type: 2}
-  - {fileID: 7400000, guid: 3464983197163ca448febf336eee8009, type: 2}
-  - {fileID: 7400000, guid: 5d1fdbd4daa59474aaa19f609363ec6c, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &565316468
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +868,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 463144138602200966, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463144138602200966, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -43078111, guid: 0792206695b00eb4193d2b4c9dd2f7b7, type: 3}
     - target: {fileID: 843081019870294835, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
@@ -927,10 +916,30 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 3240135882168067685, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240135882168067685, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 3293475848277129636, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
       objectReference: {fileID: 0}
+    - target: {fileID: 3959744166882109970, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519363266405950862, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519363266405950862, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -43078111, guid: 0792206695b00eb4193d2b4c9dd2f7b7, type: 3}
     - target: {fileID: 5823071098698081247, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1392,6 +1401,7 @@ GameObject:
   - component: {fileID: 1552096720}
   - component: {fileID: 1552096719}
   - component: {fileID: 1552096721}
+  - component: {fileID: 1552096722}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1473,10 +1483,14 @@ MonoBehaviour:
   moveSpeed: 5
   acceleration: 30
   rotationLerpSpeed: 10
+  bindingDistance: 0.01
   currencyAmountText: {fileID: 104034864}
   isInTutorial: 1
   doubleClickDelay: 0.4
   spritePivot: {fileID: 58239612}
+  colliders:
+  - {fileID: 565316470}
+  - {fileID: 1799440006}
 --- !u!58 &1552096721
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1512,6 +1526,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &1552096722
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552096715}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3dc43fbadd88264fbcbf2239d9feb09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1589194055
 GameObject:
   m_ObjectHideFlags: 0

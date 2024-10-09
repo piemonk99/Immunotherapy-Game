@@ -37,6 +37,9 @@ public class CellAI : MonoBehaviour
     private GameObject currencyPrefab;
 
     private PlayerController playerController;
+    private bool binding;
+
+    [SerializeField] private Transform bindingPoint;
 
     private void Awake()
     {
@@ -65,17 +68,22 @@ public class CellAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Marked cells do not replicate to avoid the case where all of the cancer cells have been marked but they replicate too quickly for the immune cells to kill them all.
-        if (!IsMarked())
-            HandleReplicationTimer();
-
-        activityWaitDelay -= Time.fixedDeltaTime;
-
-        if (activityWaitDelay <= 0)
+        if (!binding)
         {
-            DecideActivity();
-            activityWaitDelay += Random.Range(3f, 8f);
+            // Marked cells do not replicate to avoid the case where all of the cancer cells have been marked but they replicate too quickly for the immune cells to kill them all.
+            if (!IsMarked())
+                HandleReplicationTimer();
+
+            activityWaitDelay -= Time.fixedDeltaTime;
+
+            if (activityWaitDelay <= 0)
+            {
+                DecideActivity();
+                activityWaitDelay += Random.Range(3f, 8f);
+            }
         }
+        else
+            rb.velocity = Vector2.zero;
         
         timeAlive += Time.fixedDeltaTime;
         timeSinceReproducing += Time.fixedDeltaTime;
@@ -116,7 +124,9 @@ public class CellAI : MonoBehaviour
     private void DoActivity()
     {
         int rand = Random.Range(0, cellAnimations.Length);
-        animator.Play(cellAnimations[rand].name);
+
+        if (!animator.GetBool("ExposeAntigen") && !animator.GetBool("EmitSignal"))
+            animator.Play(cellAnimations[rand].name);
     }
 
     private void MoveCell()
@@ -200,7 +210,7 @@ public class CellAI : MonoBehaviour
     public void Mark()
     {
         marked = true;
-        transform.Find("Border").GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f);
+        animator.SetBool("EmitSignal", true);
     }
 
     public bool IsMarked()
@@ -271,6 +281,16 @@ public class CellAI : MonoBehaviour
     public void SetPlayerController(PlayerController player)
     {
         playerController = player;
+    }
+
+    public void SetBinding(bool value)
+    {
+        binding = value;
+    }
+
+    public Transform GetBindingPoint()
+    {
+        return bindingPoint;
     }
 }
 

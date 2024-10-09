@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject infoPanel;
 
     private Rigidbody2D rb;
+    private Animator animator;
     private Vector2 movementInput;
 
     [SerializeField] private float moveSpeed = 5f;
@@ -16,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private bool bindingMode;
     private int currency;
     private bool allowBinding = true;
+    private CellAI bindingTo;
+
+    [SerializeField] private float bindingDistance = 0.01f;
 
     [SerializeField] private TextMeshProUGUI currencyAmountText;
 
@@ -26,14 +30,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float doubleClickDelay = 0.4f;
 
-    private Animation anim;
-
     [SerializeField] private Transform spritePivot;
+    [SerializeField] private Collider2D[] colliders;
+
+    private bool bindingAnimationTriggered;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = gameObject.GetComponent<Animation>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     private void Update()
@@ -68,11 +73,49 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(movementInput * acceleration);
+        Vector2 movement = movementInput;
 
+        if (bindingTo != null)
+        {
+            if (Vector2.Distance(transform.position, bindingTo.GetBindingPoint().position) <= bindingDistance)
+            {
+                rb.velocity = Vector2.zero;
+                movement = Vector2.zero;
+
+                if (!bindingAnimationTriggered)
+                {
+                    animator.SetTrigger("Bind");
+                    bindingAnimationTriggered = true;
+                }
+                else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                {
+                    if (isInTutorial && bindingTo.GetIsCancer())
+                        TutorialEventManager.DoCellBound();
+
+                    bindingTo.Mark();
+                    bindingTo.SetBinding(false);
+                    Collider2D cellCollider = bindingTo.GetComponent<Collider2D>();      
+
+                    foreach (Collider2D collider in colliders)
+                        Physics2D.IgnoreCollision(collider, cellCollider, false);
+
+                    bindingTo = null;
+                    bindingAnimationTriggered = false;
+                    animator.ResetTrigger("Bind");
+                }
+            }
+            else
+                movement = ((Vector2)(bindingTo.GetBindingPoint().position - transform.position)).normalized;
+        }
+
+        rb.AddForce(movement * acceleration);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, moveSpeed);
 
-        if (rb.velocity.magnitude > 0.1f)
+        if (bindingTo != null)
+        {
+            RotateTowardsMovement(bindingTo.GetBindingPoint().up);
+        }
+        else if (rb.velocity.magnitude > 0.1f)
         {
             RotateTowardsMovement(rb.velocity);
         }
@@ -94,7 +137,7 @@ public class PlayerController : MonoBehaviour
 
     public void ToggleBindingMode()
     {
-        if (!allowBinding)
+        if (!allowBinding || bindingTo != null)
             return;
 
         bindingMode = !bindingMode;
@@ -104,25 +147,6 @@ public class PlayerController : MonoBehaviour
         {
             // Call the bound event for tutorial
             TutorialEventManager.DoBindingActivated();
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!bindingMode)
-            return;
-
-        CellAI cell = collision.gameObject.GetComponent<CellAI>();
-
-        if (cell != null && !cell.IsMarked())
-        {
-            cell.Mark();
-
-            if (isInTutorial && cell.GetIsCancer())
-            {
-                // Call the bound event for tutorial
-                TutorialEventManager.DoCellBound();
-            }
         }
     }
 
@@ -146,6 +170,22 @@ public class PlayerController : MonoBehaviour
             {
                 // Call the bound event for tutorial
                 TutorialEventManager.DoPlayerPickedSample();
+            }
+        }
+        else if (bindingMode)
+        {
+            var cell = other.GetComponentInParent<CellAI>();
+
+            if (cell != null && !cell.IsMarked())
+            {
+                cell.SetBinding(true);
+                bindingTo = cell;
+                Collider2D cellCollider = cell.GetComponent<Collider2D>();      
+
+                foreach (Collider2D collider in colliders)
+                    Physics2D.IgnoreCollision(collider, cellCollider);
+
+                rb.velocity = Vector2.zero;
             }
         }
     }
