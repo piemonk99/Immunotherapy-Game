@@ -152,25 +152,25 @@ public class TutorialDriver : MonoBehaviour
                 playerController.SetAllowBinding(false);
                 break;
             case 5:
-                aiController.CreateCell(0, new Vector3(0, 2, 0) + player.position);
-                aiController.CreateCell(0, new Vector3(1.3f, 1.3f, 0) + player.position);
-                aiController.CreateCell(0, new Vector3(2, 0, 0) + player.position);
-                aiController.CreateCell(0, new Vector3(1.3f, -1.3f, 0) + player.position);
-                aiController.CreateCell(0, new Vector3(0, -2, 0) + player.position);
-                aiController.CreateCell(0, new Vector3(-1.3f, -1.3f, 0) + player.position);
-                aiController.CreateCell(0, new Vector3(-2, 0, 0) + player.position);
-                aiController.CreateCell(0, new Vector3(-1.3f, 1.3f, 0) + player.position);
+                aiController.CreateCell(0, new Vector3(0, 6, 0));
+                aiController.CreateCell(0, new Vector3(4f, 4f, 0));
+                aiController.CreateCell(0, new Vector3(6, 0, 0));
+                aiController.CreateCell(0, new Vector3(4f, -4f, 0));
+                aiController.CreateCell(0, new Vector3(0, -6, 0));
+                aiController.CreateCell(0, new Vector3(-4f, -4f, 0));
+                aiController.CreateCell(0, new Vector3(-6, 0, 0));
+                aiController.CreateCell(0, new Vector3(-4f, 4f, 0));
                 break;
             case 6:
                 aiController.DestroyAllCells();
-                aiController.CreateCell(1, new Vector3(2, 0, 0) + player.position);
-                aiController.CreateCell(1, new Vector3(-2, 0, 0) + player.position);
+                aiController.CreateCell(1, new Vector3(4, 0, 0));
+                aiController.CreateCell(1, new Vector3(-4, 0, 0));
                 break;
             case 9:
                 playerController.SetAllowBinding(true);
                 break;
             case 13:
-                aiController.CreateCell(2, new Vector3(0, 5, 0) + player.position);
+                aiController.CreateCell(2, new Vector3(-8, 8, 0));
                 break;
 
             default:
