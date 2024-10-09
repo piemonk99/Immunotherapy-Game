@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -122,7 +123,7 @@ public class PlayerController : MonoBehaviour
                     Collider2D cellCollider = bindingTo.GetComponent<Collider2D>();
 
                     foreach (Collider2D collider in colliders)
-                        Physics2D.IgnoreCollision(collider, cellCollider, false);
+                        collider.enabled = true;
 
                     bindingTo = null;
                     bindingAnimationTriggered = false;
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour
                     Collider2D cellCollider = bindingTo.GetComponent<Collider2D>();
 
                     foreach (Collider2D collider in colliders)
-                        Physics2D.IgnoreCollision(collider, cellCollider, false);
+                        collider.enabled = true;
 
                     bindingTo = null;
                 }
@@ -214,8 +215,9 @@ public class PlayerController : MonoBehaviour
                 TutorialEventManager.DoPlayerPickedSample();
             }
         }
-        else if (bindingMode)
+        else if (other.gameObject.CompareTag("Cell") && bindingMode && bindingTo == null)
         {
+
             var cell = other.GetComponentInParent<CellAI>();
 
             if (cell != null && !cell.IsMarked())
@@ -225,7 +227,7 @@ public class PlayerController : MonoBehaviour
                 Collider2D cellCollider = cell.GetComponent<Collider2D>();      
 
                 foreach (Collider2D collider in colliders)
-                    Physics2D.IgnoreCollision(collider, cellCollider);
+                    collider.enabled = false;
 
                 rb.velocity = Vector2.zero;
             }
