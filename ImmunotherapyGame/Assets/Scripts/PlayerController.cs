@@ -18,8 +18,10 @@ public class PlayerController : MonoBehaviour
     private int currency;
     private bool allowBinding = true;
     private CellAI bindingTo;
+    private float bindingTime;
 
     [SerializeField] private float bindingDistance = 0.01f;
+    [SerializeField] private float maxBindingTime = 3; // Stop trying to bind after spending this amount of time trying to bind in order to prevent softlocking when the antigen is near a wall or something
 
     [SerializeField] private TextMeshProUGUI currencyAmountText;
 
@@ -96,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
                     bindingTo.Mark();
                     bindingTo.SetBinding(false);
-                    Collider2D cellCollider = bindingTo.GetComponent<Collider2D>();      
+                    Collider2D cellCollider = bindingTo.GetComponent<Collider2D>();
 
                     foreach (Collider2D collider in colliders)
                         Physics2D.IgnoreCollision(collider, cellCollider, false);
@@ -107,7 +109,22 @@ public class PlayerController : MonoBehaviour
                 }
             }
             else
+            {
                 movement = ((Vector2)(bindingTo.GetBindingPoint().position - transform.position)).normalized;
+                bindingTime += Time.fixedDeltaTime;
+
+                // Stop trying to bind after a certain amount of time to prevent softlocks
+                if (bindingTime >= maxBindingTime)
+                {
+                    bindingTo.SetBinding(false);
+                    Collider2D cellCollider = bindingTo.GetComponent<Collider2D>();
+
+                    foreach (Collider2D collider in colliders)
+                        Physics2D.IgnoreCollision(collider, cellCollider, false);
+
+                    bindingTo = null;
+                }
+            }
         }
 
         rb.AddForce(movement * acceleration);
