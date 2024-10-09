@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialDriver : MonoBehaviour
 {
@@ -96,10 +97,10 @@ public class TutorialDriver : MonoBehaviour
             autoAdvanceCoroutine = null;
         }
 
-        // If we've reached the end of dialogue, do nothing further
+        // If we've reached the end of dialogue, return to the main menu
         if (currentDialogueIndex >= dialogue.Count)
         {
-            Debug.Log("Tutorial completed");
+            SceneManager.LoadScene("MainMenuScene       ");
             return;
         }
 
