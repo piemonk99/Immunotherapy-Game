@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Currency
   - Level Geometry
+  - Shop
   layers:
   - Default
   - TransparentFX

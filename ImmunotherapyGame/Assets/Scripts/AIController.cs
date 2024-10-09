@@ -76,7 +76,7 @@ public class AIController : MonoBehaviour
     }
 
     // Creates a new cell. cellType 0 is normal, 1 is cancer, 2 is T-cell
-    public void CreateCell(int cellType, Vector3 position)
+    public GameObject CreateCell(int cellType, Vector3 position)
     {
         GameObject newCell;
 
@@ -92,10 +92,11 @@ public class AIController : MonoBehaviour
                 newCell = cellFactory.CreateTCell(position);
                 break;
             default:
-                return; // Invalid cell type
+                return null; // Invalid cell type
         }
 
         allCells.Add(newCell); // Add the new cell to the list
+        return newCell;
     }
 
     // Destroys all cells in the list
@@ -110,5 +111,10 @@ public class AIController : MonoBehaviour
             }
         }
 
+    }
+
+    public CellFactory GetCellFactory()
+    {
+        return cellFactory;
     }
 }

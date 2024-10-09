@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject infoPanel;
+    [SerializeField] private GameObject shopPanel;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private CellAI clickedCell;
     private float clickedCellAt;
+    private bool clickedShop;
 
     [SerializeField] private float doubleClickDelay = 0.4f;
 
@@ -57,18 +59,37 @@ public class PlayerController : MonoBehaviour
             if (hit.collider != null)
             {
                 CellAI cellAI = hit.transform.GetComponent<CellAI>();
+
                 if (cellAI != null)
                 {
-                    if (clickedCell != cellAI || Time.time - clickedCellAt > doubleClickDelay)
+                    if (clickedShop || clickedCell != cellAI || Time.time - clickedCellAt > doubleClickDelay)
                     {
                         clickedCell = cellAI;
                         clickedCellAt = Time.time;
+                        clickedShop = false;
                     }
                     else
                     {
                         infoPanel.SetActive(true);
                         infoPanel.GetComponent<InfoPanel>().UpdateInfo(cellAI, this);
                         clickedCell = null;
+                        clickedShop = false;
+                    }
+                }
+                else if (hit.collider.gameObject.CompareTag("Shop"))
+                {
+                    if (!clickedShop || clickedCell != null || Time.time - clickedCellAt > doubleClickDelay)
+                    {
+                        clickedCell = null;
+                        clickedCellAt = Time.time;
+                        clickedShop = true;
+                    }
+                    else
+                    {
+                        shopPanel.SetActive(true);
+                        shopPanel.GetComponent<Shop>().SetShopPosition(hit.collider.transform.position);
+                        clickedCell = null;
+                        clickedShop = false;
                     }
                 }
             }
@@ -126,6 +147,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        else if (shopPanel.gameObject.activeInHierarchy)
+            movementInput = Vector2.zero;
 
         rb.AddForce(movement * acceleration);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, moveSpeed);
@@ -222,5 +245,16 @@ public class PlayerController : MonoBehaviour
     public Inventory GetInventory()
     {
         return inventory;
+    }
+
+    public int GetCurrency()
+    {
+        return currency;
+    }
+
+    public void SetCurrency(int amount)
+    {
+        currency = amount;
+        currencyAmountText.text = $"{currency}";
     }
 }
