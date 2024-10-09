@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] private GameObject InventoryPanel;
     [SerializeField] private TextMeshProUGUI vaccineNumber;
     [SerializeField] private TextMeshProUGUI proteinAnalyzerNumber;
     [SerializeField] private TextMeshProUGUI CARTCellNumber;
@@ -20,7 +21,7 @@ public class Inventory : MonoBehaviour
     private Dictionary<ItemType, int> itemInventory = new Dictionary<ItemType, int>();
 
     // Initialize the inventory
-    private void Awake()
+    private void Start()
     {
         // Initialize all item counts to a starting value
         itemInventory[ItemType.Vaccine] = 0;
@@ -91,13 +92,13 @@ public class Inventory : MonoBehaviour
     // Enable the inventory panel and update UI when enabled
     public void EnableInventoryPanel()
     {
-        gameObject.SetActive(true);
+        InventoryPanel.SetActive(true);
         UpdateUI(); // Make sure the UI is up to date when opening the inventory panel
     }
 
     public void DisableInventoryPanel()
     {
-        gameObject.SetActive(false);
+        InventoryPanel.SetActive(false);
     }
 
     // Debug: Print the inventory contents to the console
