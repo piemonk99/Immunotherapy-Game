@@ -634,9 +634,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3019472676970724617}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: UseCAR_T_Cell
+        m_MethodName: OnCARTCellButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3434,9 +3434,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3019472676970724617}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: UseVaccine
+        m_MethodName: OnVaccineButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3928,6 +3928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d329ee66e6327334ea1da39ec9ff8fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiController: {fileID: 0}
+  InventoryPanel: {fileID: 0}
   vaccineNumber: {fileID: 2219703912903169879}
   proteinAnalyzerNumber: {fileID: 8598495264196349137}
   CARTCellNumber: {fileID: 2916039706124628024}
@@ -5373,9 +5375,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3019472676970724617}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: UseProteinAnalyzer
+        m_MethodName: OnProteinAnalyzerButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

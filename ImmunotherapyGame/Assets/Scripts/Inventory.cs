@@ -4,10 +4,26 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] private AIController aiController;
     [SerializeField] private GameObject InventoryPanel;
     [SerializeField] private TextMeshProUGUI vaccineNumber;
     [SerializeField] private TextMeshProUGUI proteinAnalyzerNumber;
     [SerializeField] private TextMeshProUGUI CARTCellNumber;
+
+    private Transform player;
+
+    private int tutorialStage;
+
+    // Dictionary to hold the number of each item
+    private Dictionary<ItemType, int> itemInventory = new Dictionary<ItemType, int>();
+
+    private void Awake()
+    {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TutorialScene") { tutorialStage = 0; }
+        else { tutorialStage = -1; }
+
+        player = transform;
+    }
 
     // Enumeration of the different item types in the game
     public enum ItemType
@@ -16,9 +32,6 @@ public class Inventory : MonoBehaviour
         ProteinAnalyzer,
         CAR_T_Cell
     }
-
-    // Dictionary to hold the number of each item
-    private Dictionary<ItemType, int> itemInventory = new Dictionary<ItemType, int>();
 
     // Initialize the inventory
     private void Start()
@@ -41,33 +54,63 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // Wrapper functions for UseItem
+    public void OnVaccineButtonClick() { UseItem(ItemType.Vaccine); }
+    public void OnProteinAnalyzerButtonClick() { UseItem(ItemType.ProteinAnalyzer); }
+    public void OnCARTCellButtonClick() { UseItem(ItemType.CAR_T_Cell); }
+
+
     // Function to remove an item from the inventory when used
-    public bool UseItem(ItemType itemType)
+    private bool UseItem(ItemType itemType)
     {
-        if (itemInventory.ContainsKey(itemType) && itemInventory[itemType] > 0)
+        if (!itemInventory.ContainsKey(itemType) || itemInventory[itemType] <= 0)
         {
-            itemInventory[itemType]--;
-            UpdateUI(); // Update the UI after using an item
-            return true; // Successful usage
+            Debug.Log($"Usage of item {itemType} failed; no items available.");
+            return false; // Failed usage (no items available)
+        }
+        else if (tutorialStage != -1 && ((itemType == ItemType.Vaccine && tutorialStage != 0) || (itemType == ItemType.ProteinAnalyzer && tutorialStage != 1) || (itemType == ItemType.CAR_T_Cell && tutorialStage != 2)))
+        {
+            Debug.Log($"Usage of item {itemType} failed; incorrect tutorial stage.");
+            return false; // Failed usage (in wrong stage of tutorial)
         }
 
-        return false; // Failed usage (no items available)
+        switch (itemType)
+        {
+            case ItemType.Vaccine:
+                UseVaccine();
+                break;
+            case ItemType.ProteinAnalyzer:
+                UseProteinAnalyzer();
+                break;
+            case ItemType.CAR_T_Cell:
+                UseCAR_T_Cell();
+                break;
+        }
+
+        itemInventory[itemType]--;
+        UpdateUI(); // Update the UI after using an item
+
+        return true; // Successful usage
     }
 
     // Individual functions to use specific items
-    public void UseVaccine()
+    private void UseVaccine()
     {
-        // UseItem(ItemType.Vaccine);
+        if (tutorialStage != -1) { TutorialEventManager.DoUsedVaccine(); tutorialStage = 1; }
+
+        aiController.CreateCell(1, player.position + Vector3.up).GetComponent<CellAI>().SetDummy(true);
     }
 
-    public void UseProteinAnalyzer()
+    private void UseProteinAnalyzer()
     {
-        // UseItem(ItemType.ProteinAnalyzer);
+        if (tutorialStage != -1) { TutorialEventManager.DoUsedProteinAnalyzer(); tutorialStage = 2; }
     }
 
-    public void UseCAR_T_Cell()
+    private void UseCAR_T_Cell()
     {
-        // UseItem(ItemType.CAR_T_Cell);
+        if (tutorialStage != -1) { TutorialEventManager.DoUsedCARTCell(); tutorialStage = -1; }
+
+        aiController.CreateCell(2, player.position + Vector3.up).GetComponent<TCellAI>().SetDetectCancer(true);
     }
 
     // Get the number of a specific item type in the inventory

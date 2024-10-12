@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,11 +9,14 @@ public class TutorialDriver : MonoBehaviour
 {
     public static TutorialDriver Instance { get; private set; } // Singleton instance
 
+    private event Action ClickAdvanceDialogue;
+
     [SerializeField] private Transform player;
 
     [SerializeField] private InputListener inputListener;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private AIController aiController;
+    [SerializeField] private GameObject shop;
 
     [SerializeField] private TextMeshProUGUI dialogueBox;
     private BoxCollider2D dialogueCollider; // Reference to the BoxCollider2D
@@ -41,6 +45,8 @@ public class TutorialDriver : MonoBehaviour
         dialogueCollider = dialogueBox.GetComponent<BoxCollider2D>();
         SubscribeToCurrentDialogueEvents();
         ActivateSceneObjects(); // Activate scene objects at the start
+
+        shop.SetActive(false);
     }
 
     private void InitializeTutorialDialogue()
@@ -76,7 +82,7 @@ public class TutorialDriver : MonoBehaviour
             /*26*/ "Finally, let's take a look at the last item in the shop. Let's purchase a CAR T Cell!",
             /*27*/ "A CAR T Cell is a chimeric antigen receptor T cell that is produced from T cells in the patient's blood. It can find and kill cancer cells in the area.",
             /*28*/ "Let's use the CAR T Cell!",
-            /*29*/ "As you can see, the CAR T Cell destroyed the cancer cells, which dropped more genetic samples for you to use.",
+            /*29*/ "The CAR T Cell will find and destroy cancer cells, which will drop more genetic samples for you to use.",
             /*30*/ "This is the end of the tutorial level. Good luck!"
         };
     }
@@ -109,6 +115,11 @@ public class TutorialDriver : MonoBehaviour
         ActivateSceneObjects(); // Activate scene objects for the new line
     }
 
+    public void DialogueClicked()
+    {
+        ClickAdvanceDialogue?.Invoke();
+    }
+
     private void SubscribeToCurrentDialogueEvents()
     {
         // Unsubscribe from all events first to avoid duplicates
@@ -132,9 +143,30 @@ public class TutorialDriver : MonoBehaviour
             case 14: // Picking up a sample advances this part
                 TutorialEventManager.PlayerPickedSample += AdvanceDialogue;
                 break;
-            // Add cases for each part that needs special event handling
+            case 16:
+                TutorialEventManager.ShopOpened += AdvanceDialogue;
+                break;
+            case 17:
+                TutorialEventManager.PurchasedVaccine += AdvanceDialogue;
+                break;
+            case 19:
+                TutorialEventManager.UsedVaccine += AdvanceDialogue;
+                break;
+            case 21:
+                TutorialEventManager.PurchasedProteinAnalyzer += AdvanceDialogue;
+                break;
+            case 23:
+                TutorialEventManager.UsedProteinAnalyzer += AdvanceDialogue;
+                break;
+            case 26:
+                TutorialEventManager.PurchasedCARTCell += AdvanceDialogue;
+                break;
+            case 28:
+                TutorialEventManager.UsedCARTCell += AdvanceDialogue;
+                break;
             default:
-                // Start the auto-advance timer for this dialogue line
+                // Start the auto-advance timer for this dialogue line, and subscribe to the clicked function
+                ClickAdvanceDialogue += AdvanceDialogue;
                 autoAdvanceCoroutine = StartCoroutine(AutoAdvanceDialogue());
                 break;
         }
@@ -172,7 +204,18 @@ public class TutorialDriver : MonoBehaviour
             case 13:
                 aiController.CreateCell(2, new Vector3(-8, 8, 0));
                 break;
-
+            case 16:
+                shop.SetActive(true);
+                break;
+            case 17:
+                playerController.SetCurrency(3);
+                break;
+            case 21:
+                playerController.SetCurrency(2);
+                break;
+            case 26:
+                playerController.SetCurrency(6);
+                break;
             default:
                 // No specific objects to activate
                 break;
@@ -181,11 +224,19 @@ public class TutorialDriver : MonoBehaviour
 
     private void UnsubscribeAllEvents()
     {
+        ClickAdvanceDialogue -= AdvanceDialogue;
         TutorialEventManager.PlayerMoved -= AdvanceDialogue;
         TutorialEventManager.BindingActivated -= AdvanceDialogue;
         TutorialEventManager.CellBound -= AdvanceDialogue;
         TutorialEventManager.CellDestroyed -= AdvanceDialogue;
         TutorialEventManager.PlayerPickedSample -= AdvanceDialogue;
+        TutorialEventManager.ShopOpened -= AdvanceDialogue;
+        TutorialEventManager.PurchasedVaccine -= AdvanceDialogue;
+        TutorialEventManager.UsedVaccine -= AdvanceDialogue;
+        TutorialEventManager.PurchasedProteinAnalyzer -= AdvanceDialogue;
+        TutorialEventManager.UsedProteinAnalyzer -= AdvanceDialogue;
+        TutorialEventManager.PurchasedCARTCell -= AdvanceDialogue;
+        TutorialEventManager.UsedCARTCell -= AdvanceDialogue;
     }
 
     // Coroutine to handle auto-advancing dialogue after a set time
@@ -202,11 +253,5 @@ public class TutorialDriver : MonoBehaviour
 
         // Automatically advance the dialogue
         AdvanceDialogue();
-    }
-
-    public bool CanClickToAdvance()
-    {
-        List<int> promptDialogueIndices = new List<int> { 3, 9, 10, 13, 14 }; // Indices where clicking is not allowed
-        return !promptDialogueIndices.Contains(currentDialogueIndex);
     }
 }

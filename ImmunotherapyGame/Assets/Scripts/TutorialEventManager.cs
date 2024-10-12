@@ -22,7 +22,14 @@ public class TutorialEventManager : MonoBehaviour
     public static event Action CellBound;
     public static event Action CellDestroyed;
     public static event Action PlayerPickedSample;
-    
+    public static event Action ShopOpened;
+    public static event Action PurchasedVaccine;
+    public static event Action UsedVaccine;
+    public static event Action PurchasedProteinAnalyzer;
+    public static event Action UsedProteinAnalyzer;
+    public static event Action PurchasedCARTCell;
+    public static event Action UsedCARTCell;
+
 
     // Static methods to invoke the actions
     public static void DoPlayerMoved()
@@ -50,7 +57,40 @@ public class TutorialEventManager : MonoBehaviour
         PlayerPickedSample?.Invoke();
     }
 
-    
+    public static void DoShopOpened()
+    {
+        ShopOpened?.Invoke();
+    }
+
+    public static void DoPurchasedVaccine()
+    {
+        PurchasedVaccine?.Invoke();
+    }
+
+    public static void DoUsedVaccine()
+    {
+        UsedVaccine?.Invoke();
+    }
+
+    public static void DoPurchasedProteinAnalyzer()
+    {
+        PurchasedProteinAnalyzer?.Invoke();
+    }
+
+    public static void DoUsedProteinAnalyzer()
+    {
+        UsedProteinAnalyzer?.Invoke();
+    }
+
+    public static void DoPurchasedCARTCell()
+    {
+        PurchasedCARTCell?.Invoke();
+    }
+
+    public static void DoUsedCARTCell()
+    {
+        UsedCARTCell?.Invoke();
+    }
 
     // Private constructor to enforce the singleton pattern
     private TutorialEventManager() { }
