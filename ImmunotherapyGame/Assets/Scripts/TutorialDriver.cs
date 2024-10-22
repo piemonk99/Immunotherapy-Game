@@ -69,19 +69,19 @@ public class TutorialDriver : MonoBehaviour
             /*13*/ "Observe the body's response to the marked cell: ",
             /*14*/ "Look there. The cancer cell that was destroyed has dropped a sample! Move over to it and pick it up.",
             /*15*/ "These are genetic samples of a cancer cell. They are crucial to our immunotherapy research, and they allow us to use more tools to dispose of cancer cells.",
-            /*16*/ "These samples can be used to buy useful items to help you track down those pesky cancer cells. Let's open the shop and take a look!",
-            /*17*/ "Let's purchase a vaccine!",
+            /*16*/ "These samples can be used to buy useful items to help you track down those pesky cancer cells. Open the shop and take a look!",
+            /*17*/ "Try purchasing a vaccine!",
             /*18*/ "The vaccine will spawn a harmless cancer cell, which will allow you to analyze it. It is important to take note of the appearance and behaviors of this cell, as it will give you a better idea of which cells to target.",
-            /*19*/ "Let's try using the vaccine! Tap the vaccine in your inventory to use it.",
+            /*19*/ "Try using the vaccine! Tap the vaccine in your inventory to use it.",
             /*20*/ "This is a harmless cancer cell. Observe it carefully to have a good idea of which cells you should be targeting!",
-            /*21*/ "Now, let's take a look at the second item in the shop. Let's purchase a protein analysis!",
+            /*21*/ "Now, let's take a look at the second item in the shop. Please purchase a protein analysis.",
             /*22*/ "The protein analysis will allow you to get a look at what proteins are present inside of a cell, which will help you determine if it is a normal cell or a cancer cell. Cancer cells will use certain proteins to hide themselves from the other cells.",
             /*23*/ "Use the protein analysis on this cell.",
-            /*24*/ "As you can see, there are many proteins that are present in this cell. One to note in particular is the CD47 protein. This protein sends signals to other cells, as a way to protect the cancer cell from being destroyed.",
+            /*24*/ "As you can see, there are many proteins that are present in this cell. One to note in particular is the CD47 protein. This protein sends signals to other cells, as a way to protect the cancer cell from being found and destroyed.",
             /*25*/ "That means that this is a cancer cell, and it must be destroyed. Bind to the cell to mark it to be destroyed.",
-            /*26*/ "Finally, let's take a look at the last item in the shop. Let's purchase a CAR T Cell!",
+            /*26*/ "Finally, let's take a look at the last item in the shop. Please purchase a CAR T Cell.",
             /*27*/ "A CAR T Cell is a chimeric antigen receptor T cell that is produced from T cells in the patient's blood. It can find and kill cancer cells in the area.",
-            /*28*/ "Let's use the CAR T Cell!",
+            /*28*/ "Try using the CAR T Cell!",
             /*29*/ "The CAR T Cell will find and destroy cancer cells, which will drop more genetic samples for you to use.",
             /*30*/ "This is the end of the tutorial level. Good luck!"
         };
@@ -210,11 +210,20 @@ public class TutorialDriver : MonoBehaviour
             case 17:
                 playerController.SetCurrency(3);
                 break;
+            case 19:
+                TutorialEventManager.DoPromptNextItemUsage();
+                break;
             case 21:
                 playerController.SetCurrency(2);
                 break;
+            case 23:
+                TutorialEventManager.DoPromptNextItemUsage();
+                break;
             case 26:
                 playerController.SetCurrency(6);
+                break;
+            case 28:
+                TutorialEventManager.DoPromptNextItemUsage();
                 break;
             default:
                 // No specific objects to activate

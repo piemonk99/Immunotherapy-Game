@@ -36,8 +36,11 @@ public class InfoPanel : MonoBehaviour
 
     public void ShowProteins()
     {
-        playerController.GetInventory().AddItem(Inventory.ItemType.ProteinAnalyzer, -1);
+        if (!playerController.GetInventory().UseItem(Inventory.ItemType.ProteinAnalyzer))
+            return;
+
         proteinAnalysisButton.enabled = false;
+        proteinInfo.gameObject.SetActive(true);
         proteinInfo.text = "Protein Analysis:\n";
 
         if (cancerCell)

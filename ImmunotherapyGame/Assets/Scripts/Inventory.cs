@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TutorialScene") { tutorialStage = 0; }
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TutorialScene") { tutorialStage = 0; TutorialEventManager.PromptNextItemUsage += AdvanceTutorialStage; }
         else { tutorialStage = -1; }
 
         player = transform;
@@ -61,14 +61,14 @@ public class Inventory : MonoBehaviour
 
 
     // Function to remove an item from the inventory when used
-    private bool UseItem(ItemType itemType)
+    public bool UseItem(ItemType itemType)
     {
         if (!itemInventory.ContainsKey(itemType) || itemInventory[itemType] <= 0)
         {
             Debug.Log($"Usage of item {itemType} failed; no items available.");
             return false; // Failed usage (no items available)
         }
-        else if (tutorialStage != -1 && ((itemType == ItemType.Vaccine && tutorialStage != 0) || (itemType == ItemType.ProteinAnalyzer && tutorialStage != 1) || (itemType == ItemType.CAR_T_Cell && tutorialStage != 2)))
+        else if (tutorialStage != -1 && ((itemType == ItemType.Vaccine && tutorialStage != 1) || (itemType == ItemType.ProteinAnalyzer && tutorialStage != 2) || (itemType == ItemType.CAR_T_Cell && tutorialStage != 3)))
         {
             Debug.Log($"Usage of item {itemType} failed; incorrect tutorial stage.");
             return false; // Failed usage (in wrong stage of tutorial)
@@ -96,19 +96,24 @@ public class Inventory : MonoBehaviour
     // Individual functions to use specific items
     private void UseVaccine()
     {
-        if (tutorialStage != -1) { TutorialEventManager.DoUsedVaccine(); tutorialStage = 1; }
+        if (tutorialStage != -1) { TutorialEventManager.DoUsedVaccine(); }
 
         aiController.CreateCell(1, player.position + Vector3.up).GetComponent<CellAI>().SetDummy(true);
     }
 
     private void UseProteinAnalyzer()
     {
-        if (tutorialStage != -1) { TutorialEventManager.DoUsedProteinAnalyzer(); tutorialStage = 2; }
+        if (tutorialStage != -1) { TutorialEventManager.DoUsedProteinAnalyzer(); }
     }
 
     private void UseCAR_T_Cell()
     {
-        if (tutorialStage != -1) { TutorialEventManager.DoUsedCARTCell(); tutorialStage = -1; }
+        if (tutorialStage != -1) 
+        { 
+            TutorialEventManager.DoUsedCARTCell(); 
+            tutorialStage = -1; 
+            TutorialEventManager.PromptNextItemUsage -= AdvanceTutorialStage; 
+        }
 
         aiController.CreateCell(2, player.position + Vector3.up).GetComponent<TCellAI>().SetDetectCancer(true);
     }
@@ -142,6 +147,11 @@ public class Inventory : MonoBehaviour
     public void DisableInventoryPanel()
     {
         InventoryPanel.SetActive(false);
+    }
+
+    private void AdvanceTutorialStage()
+    {
+        tutorialStage++;
     }
 
     // Debug: Print the inventory contents to the console

@@ -30,6 +30,8 @@ public class TutorialEventManager : MonoBehaviour
     public static event Action PurchasedCARTCell;
     public static event Action UsedCARTCell;
 
+    public static event Action PromptNextItemUsage;
+
 
     // Static methods to invoke the actions
     public static void DoPlayerMoved()
@@ -90,6 +92,13 @@ public class TutorialEventManager : MonoBehaviour
     public static void DoUsedCARTCell()
     {
         UsedCARTCell?.Invoke();
+    }
+
+    
+
+    public static void DoPromptNextItemUsage()
+    {
+        PromptNextItemUsage?.Invoke();
     }
 
     // Private constructor to enforce the singleton pattern
