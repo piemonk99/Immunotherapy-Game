@@ -7,15 +7,17 @@ using UnityEngine.UI;
 
 public class InfoPanel : MonoBehaviour
 {
-    TextMeshProUGUI timeAliveNumber, timeSinceReproducingNumber;
+    TextMeshProUGUI timeAliveNumber, timeSinceReproducingNumber, proteinInfo;
     [SerializeField] private Button proteinAnalysisButton;
 
     private PlayerController playerController;
+    private bool cancerCell;
 
     private void Awake()
     {
         timeAliveNumber = transform.Find("Lifespan Display").Find("Time Alive Number").GetComponent<TextMeshProUGUI>();
         timeSinceReproducingNumber = transform.Find("Reproduction Display").Find("Reproduction Number").GetComponent<TextMeshProUGUI>();
+        proteinInfo = transform.Find("Protein Information").GetComponent<TextMeshProUGUI>();
     }
 
     public void UpdateInfo(CellAI cell, PlayerController player)
@@ -23,11 +25,27 @@ public class InfoPanel : MonoBehaviour
         timeAliveNumber.text = Math.Round(cell.timeAlive, 1).ToString() + "s";
         timeSinceReproducingNumber.text = Math.Round(cell.timeSinceReproducing, 1).ToString() + "s";
         playerController = player;
+        cancerCell = cell.GetIsCancer();
         proteinAnalysisButton.enabled = playerController.GetInventory().GetItemAmount(Inventory.ItemType.ProteinAnalyzer) > 0;
     }
 
     public void ClosePanel()
     {
         gameObject.SetActive(false);
+    }
+
+    public void ShowProteins()
+    {
+        playerController.GetInventory().AddItem(Inventory.ItemType.ProteinAnalyzer, -1);
+        proteinAnalysisButton.enabled = false;
+        proteinInfo.text = "Protein Analysis:\n";
+
+        if (cancerCell)
+            proteinInfo.text += "High CD47";
+        else
+            proteinInfo.text += "High RNF20";
+
+        // Check here for further implementation? https://jhoonline.biomedcentral.com/articles/10.1186/s13045-020-01013-x
+        // The tutorial will also need to explain this more thoroughly
     }
 }

@@ -25,6 +25,8 @@ public class TCellAI : MonoBehaviour
 
     private bool detectCancer;
 
+    private List<Transform> pathfindingNodes = new List<Transform>();
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +39,7 @@ public class TCellAI : MonoBehaviour
         {
             CellAI nearestTarget = null;
             float nearestTargetDistance = 0f;
+            // Should be revamped to calculate target distance by pathfinding
 
             foreach (CellAI cell in cellFactory.GetCells())
             {
@@ -65,6 +68,7 @@ public class TCellAI : MonoBehaviour
 
             if (chaseDelay <= 0)
             {
+                // Instead of moving directly towards the cell, get the PathfindingNode nearest to it, the PathfindingNode nearest to self, and calculate the best path using A* (or a similar algorithm)
                 MoveCell(target.transform.position - transform.position);
                 chaseDelay += Random.Range(chaseIntervalMin, chaseIntervalMax);
             }
