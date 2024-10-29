@@ -255,37 +255,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104916579}
   m_CullTransparentMesh: 1
---- !u!1 &153890112
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 153890114}
-  m_Layer: 0
-  m_Name: InputListener
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &153890114
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153890112}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &231934087 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6668392180060843194, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
@@ -984,6 +953,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2829869140476747806, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1429016877}
+    - target: {fileID: 2932279414512892578, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_Name
+      value: LoseScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932279414512892578, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015339713145574940, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_Name
+      value: LoseText2
+      objectReference: {fileID: 0}
     - target: {fileID: 3240135882168067685, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
       propertyPath: m_SizeDelta.x
       value: 32
@@ -1188,6 +1173,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1552096723}
+    - target: {fileID: 7366474483144703181, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_Name
+      value: LoseText
+      objectReference: {fileID: 0}
     - target: {fileID: 7453684336653336167, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
       propertyPath: aiController
       value: 
@@ -1200,6 +1189,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8868084016972042452, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1429016877}
+    - target: {fileID: 9173964507393372208, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1429016877}
     m_RemovedComponents:
     - {fileID: 3019472676970724617, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
     m_RemovedGameObjects:
@@ -3049,7 +3046,6 @@ SceneRoots:
   - {fileID: 356286322}
   - {fileID: 1589194058}
   - {fileID: 1233590486}
-  - {fileID: 153890114}
   - {fileID: 1887940248}
   - {fileID: 1271304425}
   - {fileID: 1590412698}

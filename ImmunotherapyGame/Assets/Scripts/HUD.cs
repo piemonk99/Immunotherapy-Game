@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
@@ -8,6 +9,12 @@ public class HUD : MonoBehaviour
     [SerializeField] private Sprite resumeSprite;
 
     private bool paused;
+
+    private void Awake()
+    {
+        EventManager.Win += Win;
+        EventManager.Lose += Lose;
+    }
 
     public void TogglePause()
     {
@@ -24,4 +31,63 @@ public class HUD : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
+    public void Win()
+    {
+        // Find the immediate child named "WinScreen"
+        Transform winScreen = GetImmediateChildByName(transform, "WinScreen");
+        if (winScreen != null)
+        {
+            winScreen.gameObject.SetActive(true);
+        }
+
+        // Pause the game
+        Time.timeScale = 0;
+    }
+
+    public void Lose()
+    {
+        // Find the immediate child named "LoseScreen"
+        Transform loseScreen = GetImmediateChildByName(transform, "LoseScreen");
+        if (loseScreen != null)
+        {
+            loseScreen.gameObject.SetActive(true);
+        }
+
+        // Pause the game
+        Time.timeScale = 0;
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+
+        Time.timeScale = 1;
+    }
+    public void ReloadLevel()
+    {
+        // Get the active scene and reload it
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+
+        Time.timeScale = 1;
+    }
+    public void LoadNextLevel()
+    {
+
+    }
+
+    private Transform GetImmediateChildByName(Transform parent, string name)
+    {
+        // Iterate through all immediate children of the parent transform
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+            {
+                return child;
+            }
+        }
+        return null;
+    }
+
 }

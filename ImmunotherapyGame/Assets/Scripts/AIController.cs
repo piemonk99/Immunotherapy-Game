@@ -49,24 +49,25 @@ public class AIController : MonoBehaviour
             Vector3 randomPosition = cellFactory.GetRandomPosition();
             CreateCell(2, randomPosition); // 2 for T-cell
         }
+
+        EventManager.CheckWinLoss += CheckWinLoss;
     }
 
-    private void Update()
+    private void CheckWinLoss()
     {
-        // FIXME would be more efficient to only check when a cell dies or replicates
         int cancerCells = 0;
 
         foreach (CellAI cell in cellFactory.GetCells())
             if (cell.GetIsCancer())
                 ++cancerCells;
 
-        if (cancerCells == 0)
-        { } // Win
+        if (cancerCells == 0) 
+            EventManager.DoWin(); // Win
 
         float percentageCancer = (float)cancerCells / cellFactory.GetCells().Count;
 
-        if (percentageCancer >= 0.2f)
-        { } // Lose
+        if (percentageCancer >= 0.2f) 
+            EventManager.DoLose(); // Lose
     }
 
     public void ReplicateCell(GameObject parentCell)

@@ -110,6 +110,7 @@ public class CellAI : MonoBehaviour
     private void Replicate()
     {
         FindObjectOfType<AIController>().ReplicateCell(gameObject); // Call replication from AIController
+        EventManager.DoCheckWinLoss();
     }
 
     public void DecideActivity()
@@ -222,6 +223,8 @@ public class CellAI : MonoBehaviour
 
     public void Die()
     {
+        EventManager.DoCheckWinLoss();
+
         // Avoid dropping currency more than once
         if (dead)
             return;
