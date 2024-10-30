@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TCellAI : MonoBehaviour
@@ -25,12 +22,13 @@ public class TCellAI : MonoBehaviour
 
     private bool detectCancer;
 
-    private List<Transform> pathfindingNodes = new List<Transform>();
+    private Pathfinder pathfinder;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         isInTutorial = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TutorialScene"; // Check if current scene is TutorialScene
+        pathfinder = GetComponent<Pathfinder>();
     }
 
     private void FixedUpdate()
@@ -39,11 +37,10 @@ public class TCellAI : MonoBehaviour
         {
             CellAI nearestTarget = null;
             float nearestTargetDistance = 0f;
-            // Should be revamped to calculate target distance by pathfinding
 
             foreach (CellAI cell in cellFactory.GetCells())
             {
-                float distance = Vector2.Distance(cell.transform.position, transform.position);
+                float distance = pathfinder.DistanceToNode(pathfinder.GetNearestNode(cell.transform.position));
 
                 if ((cell.IsMarked() || (detectCancer && Random.Range(0f, 1f) < detectCancerChance * Time.fixedDeltaTime)) && (nearestTarget == null || distance < nearestTargetDistance))
                 {
@@ -53,6 +50,12 @@ public class TCellAI : MonoBehaviour
             }
 
             target = nearestTarget;
+
+            if (target != null)
+                pathfinder.SetDestination(pathfinder.GetNearestNode(target.transform.position));
+            else
+                pathfinder.SetDestination(null);
+
             // Randomly wander when no cells are marked
             wanderDelay -= Time.fixedDeltaTime;
 
@@ -68,8 +71,7 @@ public class TCellAI : MonoBehaviour
 
             if (chaseDelay <= 0)
             {
-                // Instead of moving directly towards the cell, get the PathfindingNode nearest to it, the PathfindingNode nearest to self, and calculate the best path using A* (or a similar algorithm)
-                MoveCell(target.transform.position - transform.position);
+                MoveCell(pathfinder.GetNextNode().transform.position - transform.position);
                 chaseDelay += Random.Range(chaseIntervalMin, chaseIntervalMax);
             }
         }
