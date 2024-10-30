@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 4671831006174542889}
   - component: {fileID: 4383383692475346246}
   - component: {fileID: 8419793534371015732}
+  - component: {fileID: 4325074807921897949}
   m_Layer: 0
   m_Name: TCell
   m_TagString: Cell
@@ -258,3 +259,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4325074807921897949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677818818599276213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d35be191d767c45285d03d908526c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathfindingNodes: []
+  maxPathNodeDistance: 5

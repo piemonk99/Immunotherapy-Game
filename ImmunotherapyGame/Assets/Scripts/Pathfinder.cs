@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Yohash.PriorityQueue;
@@ -19,6 +18,12 @@ public class Pathfinder : MonoBehaviour
 
     void Start()
     {
+        if (openSet == null)
+            UpdateNodes();
+    }
+
+    private void UpdateNodes()
+    {
         foreach (PathfindingNode node in pathfindingNodes)
             nodes[node] = new PriorityQueueNode(node);
 
@@ -31,7 +36,7 @@ public class Pathfinder : MonoBehaviour
             return;
 
         PriorityQueueNode nearest = currentNode;
-        float nearestDist = Vector2.Distance(transform.position, nearest.GetPathfindingNode().transform.position);
+        float nearestDist = nearest == null ? float.MaxValue : Vector2.Distance(transform.position, nearest.GetPathfindingNode().transform.position);
 
         foreach (PathfindingNode node in pathfindingNodes)
         {
@@ -44,15 +49,12 @@ public class Pathfinder : MonoBehaviour
             }
         }
 
-        if (nearest == currentNode)
-            return;
-
-        if (nearest == path.Peek())
+        if (path.Count > 0 && nearest == path.Peek())
         {
             if (nearestDist <= maxPathNodeDistance)
                 currentNode = path.Pop();
         }
-        else
+        else if (currentNode != nearest)
         {
             currentNode = nearest;
             CalculatePath();
@@ -61,12 +63,37 @@ public class Pathfinder : MonoBehaviour
 
     public PathfindingNode GetCurrentNode()
     {
+        if (currentNode == null)
+            return null;
+
         return currentNode.GetPathfindingNode();
     }
 
     public PathfindingNode GetNextNode()
     {
-        return path.Peek().GetPathfindingNode();
+        if (path.TryPeek(out PriorityQueueNode node))
+            return node.GetPathfindingNode();
+
+        return null;
+    }
+
+    public PathfindingNode GetDestination()
+    {
+        if (destination == null)
+            return null;
+
+        return destination.GetPathfindingNode();
+    }
+
+    public Stack<PriorityQueueNode> GetPath()
+    {
+        return path;
+    }
+
+    public void SetPathfindingNodes(PathfindingNode[] pfNodes)
+    {
+        pathfindingNodes = pfNodes;
+        UpdateNodes();
     }
 
     public void SetDestination(PathfindingNode dest)
@@ -77,9 +104,10 @@ public class Pathfinder : MonoBehaviour
             return;
         }
 
-        if (destination.GetPathfindingNode() == dest)
+        if (destination != null && destination.GetPathfindingNode() == dest)
             return;
 
+        currentNode ??= nodes[GetNearestNode(transform.position)];
         destination = nodes[dest];
         CalculatePath();
     }
@@ -106,11 +134,13 @@ public class Pathfinder : MonoBehaviour
     public float DistanceToNode(PathfindingNode node)
     {
         Stack<PriorityQueueNode> pathCache = new Stack<PriorityQueueNode>(path);
+        PriorityQueueNode destinationCache = destination;
         destination = nodes[node];
+        currentNode ??= nodes[GetNearestNode(transform.position)];
         CalculatePath();
         float distance = 0;
 
-        while (path.Count > 0)
+        while (path.Count > 1)
         {
             PathfindingNode current = path.Pop().GetPathfindingNode();
             PathfindingNode next = path.Peek().GetPathfindingNode();
@@ -118,6 +148,7 @@ public class Pathfinder : MonoBehaviour
         }
 
         path = pathCache;
+        destination = destinationCache;
         return distance;
     }
 
@@ -127,6 +158,7 @@ public class Pathfinder : MonoBehaviour
         cameFrom.Clear();
         costSoFar.Clear();
         openSet.Enqueue(currentNode, 0);
+        costSoFar[currentNode] = 0;
 
         while (openSet.Count > 0)
         {
@@ -143,7 +175,7 @@ public class Pathfinder : MonoBehaviour
                 PriorityQueueNode next = nodes[nextPathfindingNode];
                 float newCost = costSoFar[current] + Vector2.Distance(current.GetPathfindingNode().transform.position, next.GetPathfindingNode().transform.position);
 
-                if (costSoFar.ContainsKey(next) && newCost < costSoFar[next])
+                if (costSoFar.ContainsKey(next) && newCost >= costSoFar[next])
                     continue;
 
                 costSoFar[next] = newCost;

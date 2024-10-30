@@ -10,16 +10,18 @@ public class CellFactory
     private GameObject currencyPrefab;
     private GameObject[] shapeSpritePrefabs;
     private PlayerController playerController;
+    private PathfindingNode[] pathfindingNodes;
 
     private List<CellAI> cells = new List<CellAI>();
 
-    public CellFactory(GameObject cell, GameObject tCell, GameObject currency, GameObject[] shapes, PlayerController player)
+    public CellFactory(GameObject cell, GameObject tCell, GameObject currency, GameObject[] shapes, PlayerController player, PathfindingNode[] nodes)
     {
         cellPrefab = cell;
         tCellPrefab = tCell;
         currencyPrefab = currency;
         shapeSpritePrefabs = shapes;
         playerController = player;
+        pathfindingNodes = nodes;
     }
 
     public GameObject CreateCell(Vector3 position, List<AnimationClip> usedAnimations, bool isCancer)
@@ -38,6 +40,7 @@ public class CellFactory
     {
         GameObject newTCell = GameObject.Instantiate(tCellPrefab, position, Quaternion.identity);
         newTCell.GetComponent<TCellAI>().SetCellFactory(this);
+        newTCell.GetComponent<Pathfinder>().SetPathfindingNodes(pathfindingNodes);
         return newTCell;
     }
 

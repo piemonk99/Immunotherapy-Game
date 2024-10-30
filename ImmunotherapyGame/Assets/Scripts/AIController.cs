@@ -22,6 +22,8 @@ public class AIController : MonoBehaviour
 
     [SerializeField] private PlayerController playerController;
 
+    [SerializeField] private Transform pathfindingNodeContainer;
+
     private void Start()
     {
         usedAnimations = new List<AnimationClip>();
@@ -32,7 +34,12 @@ public class AIController : MonoBehaviour
             allCellAnimations.RemoveAt(rand);
         }
 
-        cellFactory = new CellFactory(cellPrefab, tCellPrefab, currencyPrefab, shapeSpritePrefabs, playerController);
+        PathfindingNode[] pathfindingNodes = new PathfindingNode[pathfindingNodeContainer.childCount];
+
+        for (int i = 0; i < pathfindingNodeContainer.childCount; ++i)
+            pathfindingNodes[i] = pathfindingNodeContainer.GetChild(i).GetComponent<PathfindingNode>();
+
+        cellFactory = new CellFactory(cellPrefab, tCellPrefab, currencyPrefab, shapeSpritePrefabs, playerController, pathfindingNodes);
         allCells = new List<GameObject>(); // Initialize the cell list
 
         // Instantiate the cells

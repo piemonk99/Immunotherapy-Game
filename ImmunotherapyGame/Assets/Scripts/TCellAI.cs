@@ -71,7 +71,16 @@ public class TCellAI : MonoBehaviour
 
             if (chaseDelay <= 0)
             {
-                MoveCell(pathfinder.GetNextNode().transform.position - transform.position);
+                Vector3 targetPosition = target.transform.position;
+                PathfindingNode targetNode = pathfinder.GetNearestNode(targetPosition);
+
+                if (pathfinder.GetDestination() != targetNode)
+                    pathfinder.SetDestination(targetNode);
+
+                if (pathfinder.GetNextNode() != null)
+                    targetPosition = pathfinder.GetNextNode().transform.position;
+
+                MoveCell(targetPosition - transform.position);
                 chaseDelay += Random.Range(chaseIntervalMin, chaseIntervalMax);
             }
         }
