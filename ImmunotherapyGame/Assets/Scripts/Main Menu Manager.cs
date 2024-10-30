@@ -9,6 +9,10 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("TutorialScene");
     }
+    public void Level1ButtonClicked()
+    {
+        SceneManager.LoadScene("Level1Scene");
+    }
 
     public void QuitButtonClicked()
     {
