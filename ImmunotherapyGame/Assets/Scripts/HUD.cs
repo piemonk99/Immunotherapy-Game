@@ -8,6 +8,8 @@ public class HUD : MonoBehaviour
     [SerializeField] private Sprite pauseSprite;
     [SerializeField] private Sprite resumeSprite;
 
+    [SerializeField] private GameObject pauseMenu;
+
     private bool paused;
 
     private void Awake()
@@ -19,6 +21,7 @@ public class HUD : MonoBehaviour
     public void TogglePause()
     {
         paused = !paused;
+        pauseMenu.SetActive(paused);
 
         if (paused)
         {
