@@ -76,7 +76,7 @@ public class TutorialDriver : MonoBehaviour
             /*20*/ "This is a harmless cancer cell. Observe it carefully to have a good idea of which cells you should be targeting!",
             /*21*/ "Now, let's take a look at the second item in the shop. Please purchase a protein analysis.",
             /*22*/ "The protein analysis will allow you to get a look at what proteins are present inside of a cell, which will help you determine if it is a normal cell or a cancer cell. Cancer cells will use certain proteins to hide themselves from the other cells.",
-            /*23*/ "Use the protein analysis on this cell.",
+            /*23*/ "Use the protein analysis on a cell by opening its info panel. You can open the info panel for a cell by double-clicking on it.",
             /*24*/ "As you can see, there are many proteins that are present in this cell. One to note in particular is the CD47 protein. This protein sends signals to other cells, as a way to protect the cancer cell from being found and destroyed.",
             /*25*/ "That means that this is a cancer cell, and it must be destroyed. Bind to the cell to mark it to be destroyed.",
             /*26*/ "Finally, let's take a look at the last item in the shop. Please purchase a CAR T Cell.",
