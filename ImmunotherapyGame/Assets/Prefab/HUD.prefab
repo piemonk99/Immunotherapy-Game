@@ -1622,11 +1622,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.8537736, g: 1, b: 0.98680377, a: 1}
+    m_HighlightedColor: {r: 0.9481132, g: 1, b: 0.9917751, a: 1}
+    m_PressedColor: {r: 0.6745283, g: 1, b: 0.98217475, a: 1}
+    m_SelectedColor: {r: 0.9292453, g: 1, b: 0.99441147, a: 1}
+    m_DisabledColor: {r: 0.6467604, g: 0.8113208, b: 0.7967072, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2456,6 +2456,7 @@ MonoBehaviour:
   pauseButtonImage: {fileID: 1130074438588464343}
   pauseSprite: {fileID: 1219766915, guid: 0792206695b00eb4193d2b4c9dd2f7b7, type: 3}
   resumeSprite: {fileID: -361058985, guid: 0792206695b00eb4193d2b4c9dd2f7b7, type: 3}
+  pauseMenu: {fileID: 0}
 --- !u!1 &2401233830141511950
 GameObject:
   m_ObjectHideFlags: 0

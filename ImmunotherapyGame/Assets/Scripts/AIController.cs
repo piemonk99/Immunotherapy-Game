@@ -73,7 +73,7 @@ public class AIController : MonoBehaviour
 
         float percentageCancer = (float)cancerCells / cellFactory.GetCells().Count;
 
-        if (percentageCancer >= 0.2f) 
+        if (percentageCancer >= 0.5f) 
             EventManager.DoLose(); // Lose
     }
 
