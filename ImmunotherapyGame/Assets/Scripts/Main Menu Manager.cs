@@ -91,8 +91,8 @@ public class MainMenuManager : MonoBehaviour
         FindFarthestBeatenLevel();
 
         // Sets text of start/continue button appropriately
-        if (farthestBeatenLevel == 0) StartContinueText.text = "Start";
-        else { StartContinueText.text = "Continue"; }
+        if (farthestBeatenLevel == 0) { StartContinueText.text = "Start"; StartContinueText.fontSize = 30; }
+        else { StartContinueText.text = "Continue"; StartContinueText.fontSize = 24; }
 
         for (int i = 0; i < levelSelectors.Length; i++)
         {
