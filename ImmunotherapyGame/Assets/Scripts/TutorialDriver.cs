@@ -69,7 +69,7 @@ public class TutorialDriver : MonoBehaviour
             /*13*/ "Observe the body's response to the marked cell: ",
             /*14*/ "Look there. The cancer cell that was destroyed has dropped a sample! Move over to it and pick it up.",
             /*15*/ "These are genetic samples of a cancer cell. They are crucial to our immunotherapy research, and they allow us to use more tools to dispose of cancer cells.",
-            /*16*/ "These samples can be used to buy useful items to help you track down those pesky cancer cells. Open the shop and take a look!",
+            /*16*/ "These samples can be used to buy useful items to help you track down those pesky cancer cells. Double click on the needle to open the shop and take a look!",
             /*17*/ "Try purchasing a vaccine!",
             /*18*/ "The vaccine will spawn a harmless cancer cell, which will allow you to analyze it. It is important to take note of the appearance and behaviors of this cell, as it will give you a better idea of which cells to target.",
             /*19*/ "Try using the vaccine! Tap the vaccine in your inventory to use it.",
@@ -218,12 +218,19 @@ public class TutorialDriver : MonoBehaviour
                 break;
             case 23:
                 TutorialEventManager.DoPromptNextItemUsage();
+                // Also add a cell to use the analyzer on
+                aiController.CreateCell(0, new Vector3(0, 0, 0));
                 break;
             case 26:
                 playerController.SetCurrency(6);
                 break;
             case 28:
                 TutorialEventManager.DoPromptNextItemUsage();
+                // Also add some cancer cells to be targeted
+                aiController.CreateCell(1, new Vector3(4, 0, 0));
+                aiController.CreateCell(1, new Vector3(-4, 0, 0));
+                aiController.CreateCell(1, new Vector3(4, 4, 0));
+                aiController.CreateCell(1, new Vector3(-4, -4, 0));
                 break;
             default:
                 // No specific objects to activate

@@ -180,7 +180,12 @@ public class Pathfinder : MonoBehaviour
 
                 costSoFar[next] = newCost;
                 float priority = newCost + Vector2.Distance(next.GetPathfindingNode().transform.position, destination.GetPathfindingNode().transform.position);
-                openSet.Enqueue(next, priority);
+
+                if (openSet.Contains(next))
+                    openSet.UpdatePriority(next, priority);
+                else
+                    openSet.Enqueue(next, priority);
+
                 cameFrom[next] = current;
             }
         }

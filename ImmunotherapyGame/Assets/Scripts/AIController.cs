@@ -8,6 +8,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private GameObject tCellPrefab;
     [SerializeField] private GameObject currencyPrefab;
     [SerializeField] private int numberOfCells;
+    [SerializeField] private float percentageStartingCancer;
     [SerializeField] private int numberOfTCells;
 
     [SerializeField] private List<AnimationClip> allCellAnimations;
@@ -46,7 +47,7 @@ public class AIController : MonoBehaviour
         for (int i = 0; i < numberOfCells; i++)
         {
             Vector3 randomPosition = cellFactory.GetRandomPosition();
-            int cellType = (i < numberOfCells / 10) ? 1 : 0; // 1 for cancer, 0 for normal
+            int cellType = (i < numberOfCells * percentageStartingCancer) ? 1 : 0; // 1 for cancer, 0 for normal
             CreateCell(cellType, randomPosition);
         }
 
@@ -65,7 +66,7 @@ public class AIController : MonoBehaviour
         int cancerCells = 0;
 
         foreach (CellAI cell in cellFactory.GetCells())
-            if (cell.GetIsCancer())
+            if (cell.GetIsCancer() && !cell.IsDummy())
                 ++cancerCells;
 
         if (cancerCells == 0) 

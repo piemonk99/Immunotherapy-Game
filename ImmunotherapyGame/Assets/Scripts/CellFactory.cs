@@ -28,7 +28,7 @@ public class CellFactory
     {
         GameObject newCell = GameObject.Instantiate(cellPrefab, position, Quaternion.identity);
         RandomizeCell(newCell);
-        newCell.GetComponent<CellAI>().SetCellBehavior(isCancer, usedAnimations.ToArray());
+        newCell.GetComponent<CellAI>().SetCellBehavior(isCancer, true, usedAnimations.ToArray());
         newCell.GetComponent<CellAI>().SetCurrencyPrefab(currencyPrefab);
         newCell.GetComponent<CellAI>().SetCellFactory(this);
         newCell.GetComponent<CellAI>().SetPlayerController(playerController);
@@ -90,7 +90,7 @@ public class CellFactory
             childSpecifications.randomShapes,
             childSpecifications.randomShapeColors
         );
-        childCell.GetComponent<CellAI>().SetCellBehavior(parentCellAI.GetIsCancer(), usedAnimations.ToArray());
+        childCell.GetComponent<CellAI>().SetCellBehavior(parentCellAI.GetIsCancer(), false, usedAnimations.ToArray());
         childCell.GetComponent<CellAI>().SetCurrencyPrefab(currencyPrefab);
         childCell.GetComponent<CellAI>().SetCellFactory(this);
         childCell.GetComponent<CellAI>().SetPlayerController(playerController);

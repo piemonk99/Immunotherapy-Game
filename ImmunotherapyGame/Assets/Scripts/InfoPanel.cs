@@ -22,8 +22,8 @@ public class InfoPanel : MonoBehaviour
 
     public void UpdateInfo(CellAI cell, PlayerController player)
     {
-        timeAliveNumber.text = Math.Round(cell.timeAlive, 1).ToString() + "s";
-        timeSinceReproducingNumber.text = Math.Round(cell.timeSinceReproducing, 1).ToString() + "s";
+        timeAliveNumber.text = FormatTime(cell.baseTimeAlive + cell.timeAlive);
+        timeSinceReproducingNumber.text = FormatTime(cell.timeSinceReproducing);
         playerController = player;
         cancerCell = cell.GetIsCancer();
         proteinAnalysisButton.enabled = playerController.GetInventory().GetItemAmount(Inventory.ItemType.ProteinAnalyzer) > 0;
@@ -50,5 +50,19 @@ public class InfoPanel : MonoBehaviour
 
         // Check here for further implementation? https://jhoonline.biomedcentral.com/articles/10.1186/s13045-020-01013-x
         // The tutorial will also need to explain this more thoroughly
+    }
+
+    private string FormatTime(float seconds)
+    {
+        TimeSpan timeSpan = TimeSpan.FromSeconds(seconds);
+
+        if (timeSpan.TotalMinutes < 1)
+            return $"{(int)timeSpan.TotalSeconds}s";
+        else if (timeSpan.TotalHours < 1)
+            return $"{(int)timeSpan.TotalMinutes}m {timeSpan.Seconds}s";
+        else if (timeSpan.TotalDays < 1)
+            return $"{(int)timeSpan.TotalHours}h {timeSpan.Minutes}m {timeSpan.Seconds}s";
+        else
+            return $"{(int)timeSpan.TotalDays}d {timeSpan.Hours}h {timeSpan.Minutes}m {timeSpan.Seconds}s";
     }
 }

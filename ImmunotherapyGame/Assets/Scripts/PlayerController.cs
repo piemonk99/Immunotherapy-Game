@@ -145,6 +145,8 @@ public class PlayerController : MonoBehaviour
                         collider.enabled = true;
 
                     bindingTo = null;
+                    bindingTime = 0;
+                    bindingMode = false;
                 }
             }
         }

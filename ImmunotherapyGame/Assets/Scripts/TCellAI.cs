@@ -10,7 +10,7 @@ public class TCellAI : MonoBehaviour
     [SerializeField] private float normalDrag = .1f;      //The normal drag value when under the speed threshold
     [SerializeField] private float chaseIntervalMin = 0.1f;
     [SerializeField] private float chaseIntervalMax = 0.3f;
-    [SerializeField] private float detectCancerChance = 0.05f; // Chance per second per cancer cell that a CAR T cell will target the cancer cell
+    [SerializeField] private float detectCancerChance = 0.01f; // Chance per second per cancer cell that a CAR T cell will target the cancer cell
 
     private CellFactory cellFactory;
     private CellAI target;
@@ -42,7 +42,7 @@ public class TCellAI : MonoBehaviour
             {
                 float distance = pathfinder.DistanceToNode(pathfinder.GetNearestNode(cell.transform.position));
 
-                if ((cell.IsMarked() || (detectCancer && Random.Range(0f, 1f) < detectCancerChance * Time.fixedDeltaTime)) && (nearestTarget == null || distance < nearestTargetDistance))
+                if ((cell.IsMarked() || (cell.GetIsCancer() && !cell.IsDummy() && detectCancer && Random.Range(0f, 1f) < detectCancerChance * Time.fixedDeltaTime)) && (nearestTarget == null || distance < nearestTargetDistance))
                 {
                     nearestTarget = cell;
                     nearestTargetDistance = distance;

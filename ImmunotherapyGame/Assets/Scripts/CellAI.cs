@@ -20,6 +20,7 @@ public class CellAI : MonoBehaviour
 
     [SerializeField] private float displayAntigenDistance = 8;
 
+    [HideInInspector] public float baseTimeAlive = 0f;
     [HideInInspector] public float timeAlive = 0f;
     [HideInInspector] public float timeSinceReproducing;
 
@@ -51,13 +52,6 @@ public class CellAI : MonoBehaviour
         //Initialize random decision for activity
         double rand = Random.value;
         if (rand > .66) goingToDoActivity = true;
-    }
-
-    private void Start()
-    {
-        //Initialize the replication timer
-        float randomTimeCoefficient = (Random.value * .4f) + .8f;
-        replicationTimer = replicationTime * randomTimeCoefficient;
     }
 
     private void Update()
@@ -184,19 +178,33 @@ public class CellAI : MonoBehaviour
         }
     }
 
-    public void SetCellBehavior(bool cancer, AnimationClip[] animations)
+    public void SetCellBehavior(bool cancer, bool original, AnimationClip[] animations)
     {
         isCancer = cancer;
 
         if (isCancer)
         {
             cellAnimations = animations; //Cancer cells get all 5 used animations 
-            replicationTime = 40; //Cancer cells replication time
+            replicationTime = 80; //Cancer cells replication time
         }
         else
         {
             cellAnimations = animations.Take(animations.Length - 1).ToArray(); //Regular cells get all but the last animation
-            replicationTime = 160; //Regular cell replication time
+            replicationTime = 320; //Regular cell replication time
+        }
+
+        if (original)
+        {
+            float randomTimeCoefficient = (Random.value * .4f) + .8f;
+            float baseTimerValue = replicationTime * randomTimeCoefficient;
+            replicationTimer = baseTimerValue * Random.value;
+            timeSinceReproducing = baseTimerValue - replicationTimer;
+            baseTimeAlive = Random.value * 60 * 60 * 24 * (isCancer ? 150 : 60);
+        }
+        else
+        {
+            float randomTimeCoefficient = (Random.value * .4f) + .8f;
+            replicationTimer = replicationTime * randomTimeCoefficient;
         }
     }
 
@@ -301,6 +309,11 @@ public class CellAI : MonoBehaviour
     public void SetDummy(bool value)
     {
         dummy = value;
+    }
+
+    public bool IsDummy()
+    {
+        return dummy;
     }
 }
 
