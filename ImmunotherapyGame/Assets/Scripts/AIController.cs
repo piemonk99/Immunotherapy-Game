@@ -25,6 +25,8 @@ public class AIController : MonoBehaviour
 
     [SerializeField] private Transform pathfindingNodeContainer;
 
+    [SerializeField] private AudioSource musicPlayer;
+
     private void Start()
     {
         usedAnimations = new List<AnimationClip>();
@@ -51,6 +53,9 @@ public class AIController : MonoBehaviour
             CreateCell(cellType, randomPosition);
         }
 
+        if (musicPlayer != null)
+            musicPlayer.pitch = 1 - (int)(numberOfCells * percentageStartingCancer) / (float) numberOfCells / 0.5f * 0.5f;
+
         // Instantiate the T-cells
         for (int i = 0; i < numberOfTCells; i++)
         {
@@ -76,6 +81,9 @@ public class AIController : MonoBehaviour
 
         if (percentageCancer >= 0.5f) 
             EventManager.DoLose(); // Lose
+
+        if (musicPlayer != null)
+            musicPlayer.pitch = 1 - percentageCancer / 0.5f * 0.5f;
     }
 
     public void ReplicateCell(GameObject parentCell)

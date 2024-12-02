@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Inventory inventory;
 
+    [SerializeField] private AudioClip sampleCollectSound;
+    [SerializeField] private AudioClip bindModeSound;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -147,6 +150,7 @@ public class PlayerController : MonoBehaviour
                     bindingTo = null;
                     bindingTime = 0;
                     bindingMode = false;
+                    AudioClipPlayer.PlayClipAtPoint(bindModeSound, transform.position);
                 }
             }
         }
@@ -193,6 +197,8 @@ public class PlayerController : MonoBehaviour
             // Call the bound event for tutorial
             TutorialEventManager.DoBindingActivated();
         }
+
+        AudioClipPlayer.PlayClipAtPoint(bindModeSound, transform.position);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -216,6 +222,8 @@ public class PlayerController : MonoBehaviour
                 // Call the bound event for tutorial
                 TutorialEventManager.DoPlayerPickedSample();
             }
+
+            AudioClipPlayer.PlayClipAtPoint(sampleCollectSound, transform.position);
         }
         else if (other.gameObject.CompareTag("Cell") && bindingMode && bindingTo == null)
         {
