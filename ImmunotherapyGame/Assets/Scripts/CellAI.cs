@@ -197,7 +197,10 @@ public class CellAI : MonoBehaviour
         {
             float randomTimeCoefficient = (Random.value * .4f) + .8f;
             float baseTimerValue = replicationTime * randomTimeCoefficient;
+
             replicationTimer = baseTimerValue * Random.value;
+            replicationTime = Mathf.Max(replicationTime, 2);
+
             timeSinceReproducing = baseTimerValue - replicationTimer;
             baseTimeAlive = Random.value * 60 * 60 * 24 * (isCancer ? 150 : 60);
         }
