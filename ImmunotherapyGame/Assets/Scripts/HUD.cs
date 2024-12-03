@@ -77,7 +77,18 @@ public class HUD : MonoBehaviour
     }
     public void LoadNextLevel()
     {
-
+        switch(SceneManager.GetActiveScene().name)
+        {
+            case "Level1Scene": 
+                SceneManager.LoadScene("Level2Scene");
+                break;
+            case "Level2Scene": 
+                SceneManager.LoadScene("Level3Scene");
+                break;
+            case "Level3Scene":
+                SceneManager.LoadScene("MainMenuScene");
+                break;
+        }
     }
 
     private Transform GetImmediateChildByName(Transform parent, string name)
@@ -93,4 +104,9 @@ public class HUD : MonoBehaviour
         return null;
     }
 
+    private void OnDestroy()
+    {
+        EventManager.Win -= Win;
+        EventManager.Lose -= Lose;
+    }
 }
