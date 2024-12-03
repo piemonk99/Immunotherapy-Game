@@ -77,7 +77,9 @@ public class HUD : MonoBehaviour
     }
     public void LoadNextLevel()
     {
-        switch(SceneManager.GetActiveScene().name)
+        Time.timeScale = 1;
+
+        switch (SceneManager.GetActiveScene().name)
         {
             case "Level1Scene": 
                 SceneManager.LoadScene("Level2Scene");
