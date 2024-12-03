@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
                         collider.enabled = true;
 
                     bindingTo = null;
+                    bindingTime = 0;
                     bindingAnimationTriggered = false;
                     animator.ResetTrigger("Bind");
                 }
@@ -149,8 +150,7 @@ public class PlayerController : MonoBehaviour
 
                     bindingTo = null;
                     bindingTime = 0;
-                    bindingMode = false;
-                    AudioClipPlayer.PlayClipAtPoint(bindModeSound, transform.position);
+                    ToggleBindingMode();
                 }
             }
         }

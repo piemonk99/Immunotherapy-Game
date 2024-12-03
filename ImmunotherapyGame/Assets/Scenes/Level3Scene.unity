@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e763212712c4d448c3aea20d1b176b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevelNumber: 1
+  currentLevelNumber: 3
 --- !u!4 &410563861
 Transform:
   m_ObjectHideFlags: 0
@@ -778,7 +778,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 261037661069872130, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 463144138602200966, guid: 92324dbeb8b268e8d8bbae23cd565ae8, type: 3}
       propertyPath: m_Type

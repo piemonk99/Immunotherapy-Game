@@ -31,6 +31,7 @@ public class InfoPanel : MonoBehaviour
 
     public void ClosePanel()
     {
+        proteinInfo.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 

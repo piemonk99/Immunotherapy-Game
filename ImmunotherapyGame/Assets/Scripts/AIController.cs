@@ -69,15 +69,22 @@ public class AIController : MonoBehaviour
     private void CheckWinLoss()
     {
         int cancerCells = 0;
+        int totalCells = 0;
 
         foreach (CellAI cell in cellFactory.GetCells())
-            if (cell.GetIsCancer() && !cell.IsDummy())
-                ++cancerCells;
+            if (!cell.IsDummy())
+            {
+                if (cell.GetIsCancer())
+                    ++cancerCells;
 
-        if (cancerCells == 0) 
+                ++totalCells;
+            }
+
+        float percentageCancer = (float)cancerCells / (float)totalCells;
+        Debug.Log($"{cancerCells} / {totalCells} = {percentageCancer}");
+
+        if (cancerCells == 0)
             EventManager.DoWin(); // Win
-
-        float percentageCancer = (float)cancerCells / cellFactory.GetCells().Count;
 
         if (percentageCancer >= 0.5f) 
             EventManager.DoLose(); // Lose
