@@ -219,7 +219,7 @@ public class TutorialDriver : MonoBehaviour
             case 23:
                 TutorialEventManager.DoPromptNextItemUsage();
                 // Also add a cell to use the analyzer on
-                aiController.CreateCell(0, new Vector3(0, 0, 0));
+                aiController.CreateCell(1, new Vector3(0, 0, 0));
                 break;
             case 26:
                 playerController.SetCurrency(6);
