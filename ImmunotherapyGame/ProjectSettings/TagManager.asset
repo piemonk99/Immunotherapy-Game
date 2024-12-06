@@ -7,6 +7,7 @@ TagManager:
   - Currency
   - Level Geometry
   - Shop
+  - Cell
   layers:
   - Default
   - TransparentFX

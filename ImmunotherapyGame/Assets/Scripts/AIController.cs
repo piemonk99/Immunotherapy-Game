@@ -141,4 +141,9 @@ public class AIController : MonoBehaviour
     {
         return cellFactory;
     }
+
+    private void OnDestroy()
+    {
+        EventManager.CheckWinLoss -= CheckWinLoss;
+    }
 }
